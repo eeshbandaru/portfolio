@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspire: International Student Resource Platform | Eesha Bandaru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ocean-blue: #0077B6;
+            --coral-accent: #FF7B54;
+            --sage-green: #90BE6D;
+            --warm-beige: #F8F4E8;
+            --deep-navy: #023047;
+            --light-sky: #CAF0F8;
+            --gold-highlight: #FFB627;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--warm-beige);
+            color: var(--deep-navy);
+            line-height: 1.7;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--ocean-blue) 0%, #0096C7 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .globe-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.4;
+            animation: drift 30s linear infinite;
+        }
+
+        @keyframes drift {
+            from { transform: translateX(0); }
+            to { transform: translateX(50px); }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeSlideIn 0.8s ease-out;
+        }
+
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5.5rem;
+            font-weight: 900;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            animation: fadeSlideIn 1s ease-out 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.75rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin-bottom: 4rem;
+            font-weight: 300;
+            animation: fadeSlideIn 1s ease-out 0.4s both;
+        }
+
+        .key-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            animation: fadeSlideIn 1s ease-out both;
+        }
+
+        .stat-box:nth-child(1) { animation-delay: 0.6s; }
+        .stat-box:nth-child(2) { animation-delay: 0.7s; }
+        .stat-box:nth-child(3) { animation-delay: 0.8s; }
+
+        .stat-box:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--gold-highlight);
+            line-height: 1;
+        }
+
+        .stat-label {
+            margin-top: 0.75rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+        }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .section-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, var(--coral-accent), var(--gold-highlight));
+            border-radius: 3px;
+        }
+
+        .problem-box {
+            background: white;
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 3rem 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            border-top: 6px solid var(--coral-accent);
+        }
+
+        .problem-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--coral-accent);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .problem-text {
+            font-size: 1.25rem;
+            color: #4A5568;
+            line-height: 1.9;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .research-card {
+            background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
+            border-radius: 24px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--ocean-blue), var(--sage-green));
+        }
+
+        .research-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0, 119, 182, 0.15);
+        }
+
+        .card-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--ocean-blue);
+            opacity: 0.15;
+            position: absolute;
+            right: 2rem;
+            top: 1rem;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--deep-navy);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-description {
+            color: #4A5568;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        .solution-showcase {
+            background: var(--deep-navy);
+            border-radius: 32px;
+            padding: 6rem 4rem;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-showcase::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 182, 39, 0.15) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        .solution-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--coral-accent), var(--gold-highlight));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 2rem;
+            transition: transform 0.4s ease;
+        }
+
+        .feature:hover .feature-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .feature-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .feature-text {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+        }
+
+        .metrics-banner {
+            background: linear-gradient(135deg, var(--sage-green) 0%, #A8DADC 100%);
+            border-radius: 32px;
+            padding: 5rem 4rem;
+            text-align: center;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metrics-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .banner-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--deep-navy);
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .metrics-display {
+            display: flex;
+            justify-content: center;
+            gap: 6rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--deep-navy);
+        }
+
+        .metric-desc {
+            font-size: 1.25rem;
+            color: var(--deep-navy);
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .approach-section {
+            background: white;
+            border-radius: 32px;
+            padding: 5rem 4rem;
+            margin: 6rem 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .approach-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .step-icon-box {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--ocean-blue), var(--light-sky));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--deep-navy);
+            margin-bottom: 1rem;
+        }
+
+        .step-content p {
+            color: #4A5568;
+            line-height: 1.8;
+            font-size: 1.125rem;
+        }
+
+        .skills-container {
+            background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
+            border-radius: 32px;
+            padding: 5rem 4rem;
+            margin: 6rem 0;
+        }
+
+        .skills-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .skill-badge {
+            padding: 1rem 2rem;
+            background: white;
+            border: 2px solid var(--ocean-blue);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--ocean-blue);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-badge:hover {
+            background: var(--ocean-blue);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 119, 182, 0.25);
+        }
+
+        .footer-cta {
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .cta-link {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: linear-gradient(135deg, var(--ocean-blue), var(--sage-green));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 40px rgba(0, 119, 182, 0.3);
+        }
+
+        .cta-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 119, 182, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3.5rem; }
+            .section-heading { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.25rem; }
+            .problem-box, .solution-showcase, .approach-section, .skills-container { padding: 2.5rem; }
+            .step { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="globe-pattern"></div>
+        <div class="hero-container">
+            <div class="hero-label">Product Management Project</div>
+            <h1>Aspire</h1>
+            <p class="hero-subtitle">
+                Empowering international students with centralized, trusted resources to navigate their academic journey
+            </p>
+            
+            <div class="key-stats">
+                <div class="stat-box">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">Faster Resource Discovery</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Students Interviewed</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">Full</div>
+                    <div class="stat-label">Product Lifecycle</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2 class="section-heading">The Challenge</h2>
+        
+        <div class="problem-box">
+            <div class="problem-icon">🌍</div>
+            <div class="problem-title">Fragmented Information, Lost Opportunities</div>
+            <p class="problem-text">
+                International students face a critical challenge: they need accurate, timely information about visas, housing, financial aid, campus resources, and cultural integration—but this information is scattered across dozens of unreliable sources. The result? Missed deadlines, poor decisions, and unnecessary stress during an already overwhelming transition.
+            </p>
+            <br>
+            <p class="problem-text">
+                Through extensive user research, I discovered that the core issue wasn't lack of information—it was the lack of a single, trusted source that could guide students through their entire journey with confidence.
+            </p>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2 class="section-heading">Research & Discovery</h2>
+        
+        <div class="research-grid">
+            <div class="research-card">
+                <div class="card-number">01</div>
+                <div class="card-title">User Interviews</div>
+                <div class="card-description">
+                    Conducted 100+ interviews with international students to understand their information-seeking behaviors, pain points with existing resources, and moments of critical decision-making during their academic journey.
+                </div>
+            </div>
+            
+            <div class="research-card">
+                <div class="card-number">02</div>
+                <div class="card-title">Gap Analysis</div>
+                <div class="card-description">
+                    Identified that students spent hours cross-referencing multiple sources but still lacked confidence in the accuracy of information. Discovered high-stakes decisions were being made based on fragmented or outdated guidance.
+                </div>
+            </div>
+            
+            <div class="research-card">
+                <div class="card-number">03</div>
+                <div class="card-title">Trust Mapping</div>
+                <div class="card-description">
+                    Analyzed which sources students trusted most and why. Found that official university resources were trusted but hard to navigate, while peer recommendations were accessible but unreliable.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution-showcase">
+        <h2 class="solution-title">Product Solution</h2>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-name">Centralized Discovery</div>
+                <div class="feature-text">
+                    Built a single platform aggregating verified resources from university offices, immigration services, and student support organizations—eliminating the need to search across fragmented sources.
+                </div>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">✅</div>
+                <div class="feature-name">Verified Information</div>
+                <div class="feature-text">
+                    Partnered with official university departments to ensure all content was accurate, up-to-date, and vetted by subject matter experts—building trust through source credibility.
+                </div>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🗺️</div>
+                <div class="feature-name">Journey-Based Navigation</div>
+                <div class="feature-text">
+                    Designed information architecture around key student milestones (pre-arrival, first semester, internships, graduation) rather than arbitrary categories—making critical resources discoverable when students actually need them.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="approach-section">
+            <h2 class="section-heading">Product Approach</h2>
+            
+            <div class="approach-steps">
+                <div class="step">
+                    <div class="step-icon-box">📋</div>
+                    <div class="step-content">
+                        <h3>Roadmap Prioritization</h3>
+                        <p>
+                            Defined product scope by identifying the highest-impact information gaps: visa guidance, housing search, financial resources, and academic support. Prioritized features based on urgency and frequency of student need.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon-box">🎨</div>
+                    <div class="step-content">
+                        <h3>UX & Information Architecture</h3>
+                        <p>
+                            Designed navigation and content hierarchy based on user research insights. Created journey-based pathways that surfaced relevant resources at critical decision points, reducing time-to-information from hours to minutes.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon-box">🔄</div>
+                    <div class="step-content">
+                        <h3>Iterative Testing</h3>
+                        <p>
+                            Analyzed post-launch usage data and user feedback to iterate on navigation structure and content organization. Identified friction points in resource discovery and refined search and filtering capabilities.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon-box">📊</div>
+                    <div class="step-content">
+                        <h3>Metrics & Optimization</h3>
+                        <p>
+                            Defined engagement metrics (time-to-resource, search success rate, return usage) to measure product effectiveness. Used behavioral data to guide iteration and improve content discoverability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="metrics-banner">
+        <h2 class="banner-title">Impact & Results</h2>
+        <div class="metrics-display">
+            <div class="metric">
+                <div class="metric-value">40%</div>
+                <div class="metric-desc">Faster Resource Discovery</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">90%</div>
+                <div class="metric-desc">Student Satisfaction Score</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">5x</div>
+                <div class="metric-desc">Increase in Return Users</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="approach-section">
+            <h2 class="section-heading">Reflections & Insights</h2>
+            
+            <div class="approach-steps">
+                <div class="step">
+                    <div class="step-icon-box">🎯</div>
+                    <div class="step-content">
+                        <h3>The Information Architecture Challenge</h3>
+                        <p>
+                            My biggest learning from Aspire was understanding that organizing information is fundamentally a product problem, not just a design problem. I initially organized content by topic (visas, housing, academics)—but users didn't think in those categories. They thought in terms of their journey: "I just got accepted, what do I do first?"
+                        </p>
+                        <br>
+                        <p>
+                            Reorganizing around journey stages rather than content types reduced time-to-information by 40%. This taught me that effective product strategy requires deeply understanding not just what users need, but when and why they need it.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon-box">🤝</div>
+                    <div class="step-content">
+                        <h3>Stakeholder Management Reality</h3>
+                        <p>
+                            Working with multiple university departments taught me that stakeholders often have competing priorities—and that's okay. The international student office wanted comprehensive information; the admissions office wanted streamlined content to reduce applicant anxiety. Both were right.
+                        </p>
+                        <br>
+                        <p>
+                            I learned to find solutions that satisfied multiple stakeholder needs simultaneously. We created progressive disclosure: simple guidance upfront with "learn more" links for students who wanted depth. This experience taught me that great PMs find creative solutions rather than simply negotiating compromises.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon-box">📊</div>
+                    <div class="step-content">
+                        <h3>The Trust Problem is a Product Problem</h3>
+                        <p>
+                            Students didn't just need information—they needed trusted information. I initially underestimated how much source credibility mattered. Through user research, I learned that students would rather spend hours finding "official" sources than use faster but unverified ones.
+                        </p>
+                        <br>
+                        <p>
+                            This insight reshaped our entire product strategy. We added visible verification badges, partnered directly with official departments, and showed last-updated timestamps. These trust signals became core product features, not just nice-to-haves. It reinforced that successful products must address emotional needs (feeling confident and safe) alongside functional ones.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon-box">🔄</div>
+                    <div class="step-content">
+                        <h3>What I'd Do Differently</h3>
+                        <p>
+                            I would have invested more time in post-launch content maintenance strategy. We built a great discovery experience, but keeping information current required ongoing effort from partner departments. In retrospect, I should have built content governance processes into the product roadmap from the start, not as an afterthought. Future projects will include sustainability planning as a core product requirement, not just a launch consideration.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="skills-container">
+            <h2 class="section-heading">PM Capabilities Demonstrated</h2>
+            
+            <div class="skills-flex">
+                <div class="skill-badge">User Research</div>
+                <div class="skill-badge">Product Roadmapping</div>
+                <div class="skill-badge">Information Architecture</div>
+                <div class="skill-badge">Content Strategy</div>
+                <div class="skill-badge">Stakeholder Management</div>
+                <div class="skill-badge">Data Analysis</div>
+                <div class="skill-badge">UX Design</div>
+                <div class="skill-badge">Feature Prioritization</div>
+                <div class="skill-badge">Launch Planning</div>
+                <div class="skill-badge">Metrics Definition</div>
+                <div class="skill-badge">Cross-Functional Leadership</div>
+                <div class="skill-badge">Product Strategy</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2 class="section-heading">Design Evolution: Wireframes</h2>
+        
+        <div style="background: white; border-radius: 32px; padding: 5rem 4rem; margin: 3rem 0; box-shadow: 0 20px 60px rgba(0,0,0,0.08);">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 2.25rem; font-weight: 700; color: var(--deep-navy); margin-bottom: 3rem; text-align: center;">Information Architecture & Navigation</h3>
+            
+            <!-- Wireframe 1: Homepage Navigation -->
+            <div style="margin-bottom: 6rem;">
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; color: var(--ocean-blue); margin-bottom: 2rem;">Journey-Based Homepage</h4>
+                <svg width="100%" height="500" viewBox="0 0 1000 500" style="background: #F7FAFC; border-radius: 16px; padding: 2rem;">
+                    <!-- Mobile frame -->
+                    <rect x="50" y="30" width="300" height="440" fill="white" stroke="#CBD5E0" stroke-width="2" rx="20"/>
+                    
+                    <!-- Header -->
+                    <rect x="50" y="30" width="300" height="60" fill="var(--ocean-blue)" rx="20 20 0 0"/>
+                    <text x="200" y="65" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Aspire</text>
+                    <circle cx="320" cy="60" r="15" fill="white" opacity="0.3"/>
+                    <text x="320" y="65" text-anchor="middle" font-size="12" fill="white">👤</text>
+                    
+                    <!-- Search bar -->
+                    <rect x="70" y="110" width="260" height="40" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1" rx="20"/>
+                    <text x="85" y="135" font-size="12" fill="#A0AEC0">Search resources...</text>
+                    <text x="310" y="135" font-size="14">🔍</text>
+                    
+                    <!-- Journey stages -->
+                    <g transform="translate(70, 170)">
+                        <rect width="260" height="70" fill="#E6F7FF" stroke="#0077B6" stroke-width="2" rx="12"/>
+                        <text x="20" y="30" font-size="14" font-weight="bold" fill="#023047">🛫 Pre-Arrival</text>
+                        <text x="20" y="50" font-size="11" fill="#4A5568">Visa, Housing, Planning</text>
+                        <circle cx="240" cy="35" r="12" fill="white"/>
+                        <text x="240" y="40" text-anchor="middle" font-size="16" fill="#0077B6">›</text>
+                    </g>
+                    
+                    <g transform="translate(70, 255)">
+                        <rect width="260" height="70" fill="white" stroke="#E2E8F0" stroke-width="1" rx="12"/>
+                        <text x="20" y="30" font-size="14" font-weight="bold" fill="#023047">📚 First Semester</text>
+                        <text x="20" y="50" font-size="11" fill="#4A5568">Academic Support, Campus Life</text>
+                        <circle cx="240" cy="35" r="12" fill="#F7FAFC"/>
+                        <text x="240" y="40" text-anchor="middle" font-size="16" fill="#A0AEC0">›</text>
+                    </g>
+                    
+                    <g transform="translate(70, 340)">
+                        <rect width="260" height="70" fill="white" stroke="#E2E8F0" stroke-width="1" rx="12"/>
+                        <text x="20" y="30" font-size="14" font-weight="bold" fill="#023047">💼 Career & Beyond</text>
+                        <text x="20" y="50" font-size="11" fill="#4A5568">Internships, OPT, CPT</text>
+                        <circle cx="240" cy="35" r="12" fill="#F7FAFC"/>
+                        <text x="240" y="40" text-anchor="middle" font-size="16" fill="#A0AEC0">›</text>
+                    </g>
+                    
+                    <!-- Desktop preview -->
+                    <rect x="420" y="80" width="530" height="350" fill="white" stroke="#CBD5E0" stroke-width="2" rx="8"/>
+                    <rect x="420" y="80" width="530" height="50" fill="#023047" rx="8 8 0 0"/>
+                    <text x="685" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Aspire - International Student Resources</text>
+                    
+                    <!-- Content sections -->
+                    <g transform="translate(440, 150)">
+                        <text x="0" y="0" font-size="13" font-weight="bold" fill="#023047">Quick Access</text>
+                        <rect x="0" y="10" width="150" height="60" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1" rx="6"/>
+                        <text x="75" y="35" text-anchor="middle" font-size="11" fill="#4A5568">Visa Documents</text>
+                        <text x="75" y="50" text-anchor="middle" font-size="9" fill="#A0AEC0">Updated 2 days ago</text>
+                        
+                        <rect x="165" y="10" width="150" height="60" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1" rx="6"/>
+                        <text x="240" y="35" text-anchor="middle" font-size="11" fill="#4A5568">Housing Guide</text>
+                        <text x="240" y="50" text-anchor="middle" font-size="9" fill="#A0AEC0">Verified by UC Davis</text>
+                        
+                        <rect x="330" y="10" width="150" height="60" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1" rx="6"/>
+                        <text x="405" y="35" text-anchor="middle" font-size="11" fill="#4A5568">Financial Aid</text>
+                        <text x="405" y="50" text-anchor="middle" font-size="9" fill="#A0AEC0">Official resource</text>
+                    </g>
+                    
+                    <!-- Recent updates -->
+                    <g transform="translate(440, 250)">
+                        <text x="0" y="0" font-size="13" font-weight="bold" fill="#023047">Recently Updated</text>
+                        <g transform="translate(0, 15)">
+                            <circle cx="8" cy="15" r="4" fill="#00D4AA"/>
+                            <rect x="20" y="5" width="460" height="25" fill="white" stroke="#E2E8F0" stroke-width="1" rx="4"/>
+                            <text x="30" y="22" font-size="11" fill="#023047">F-1 Visa Extension Process - Spring 2024</text>
+                        </g>
+                        <g transform="translate(0, 50)">
+                            <circle cx="8" cy="15" r="4" fill="#FFB627"/>
+                            <rect x="20" y="5" width="460" height="25" fill="white" stroke="#E2E8F0" stroke-width="1" rx="4"/>
+                            <text x="30" y="22" font-size="11" fill="#023047">New International Student Orientation Dates</text>
+                        </g>
+                        <g transform="translate(0, 85)">
+                            <circle cx="8" cy="15" r="4" fill="#0077B6"/>
+                            <rect x="20" y="5" width="460" height="25" fill="white" stroke="#E2E8F0" stroke-width="1" rx="4"/>
+                            <text x="30" y="22" font-size="11" fill="#023047">Healthcare Insurance Options Comparison</text>
+                        </g>
+                    </g>
+                </svg>
+                <p style="color: #4A5568; margin-top: 2rem; font-size: 1.1rem; line-height: 1.8;">Journey-based navigation surfaces relevant resources at critical decision points in the student lifecycle, reducing discovery time from hours to minutes.</p>
+            </div>
+            
+            <!-- Wireframe 2: Resource Detail Page -->
+            <div style="margin-bottom: 6rem;">
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; color: var(--ocean-blue); margin-bottom: 2rem;">Resource Detail & Trust Signals</h4>
+                <svg width="100%" height="550" viewBox="0 0 900 550" style="background: #F7FAFC; border-radius: 16px; padding: 2rem;">
+                    <!-- Page container -->
+                    <rect x="50" y="30" width="800" height="490" fill="white" stroke="#CBD5E0" stroke-width="2" rx="8"/>
+                    
+                    <!-- Breadcrumb -->
+                    <text x="70" y="60" font-size="11" fill="#718096">Home › Pre-Arrival › Housing</text>
+                    
+                    <!-- Title section -->
+                    <text x="70" y="95" font-size="20" font-weight="bold" fill="#023047">Complete Housing Guide for International Students</text>
+                    
+                    <!-- Trust badges -->
+                    <g transform="translate(70, 110)">
+                        <rect width="120" height="24" fill="#E6F7FF" rx="12"/>
+                        <text x="60" y="16" text-anchor="middle" font-size="10" fill="#0077B6" font-weight="600">✓ UC Davis Verified</text>
+                        
+                        <rect x="135" width="100" height="24" fill="#F0FFF4" rx="12"/>
+                        <text x="185" y="16" text-anchor="middle" font-size="10" fill="#38A169" font-weight="600">Updated Feb 2024</text>
+                        
+                        <rect x="250" width="80" height="24" fill="#FFF5E6" rx="12"/>
+                        <text x="290" y="16" text-anchor="middle" font-size="10" fill="#D69E2E" font-weight="600">⭐ Essential</text>
+                    </g>
+                    
+                    <!-- Content sections -->
+                    <g transform="translate(70, 160)">
+                        <!-- Table of contents -->
+                        <rect width="250" height="300" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1" rx="8"/>
+                        <text x="15" y="30" font-size="13" font-weight="bold" fill="#023047">Quick Navigation</text>
+                        
+                        <g transform="translate(15, 45)">
+                            <text x="0" y="15" font-size="11" fill="#0077B6" font-weight="600">1. On-Campus Housing</text>
+                            <text x="15" y="35" font-size="10" fill="#4A5568">• Application Process</text>
+                            <text x="15" y="50" font-size="10" fill="#4A5568">• Room Types & Pricing</text>
+                            <text x="15" y="65" font-size="10" fill="#4A5568">• Deadlines & Waitlists</text>
+                            
+                            <text x="0" y="90" font-size="11" fill="#4A5568">2. Off-Campus Options</text>
+                            <text x="15" y="110" font-size="10" fill="#4A5568">• Apartment Search Tips</text>
+                            <text x="15" y="125" font-size="10" fill="#4A5568">• Lease Requirements</text>
+                            <text x="15" y="140" font-size="10" fill="#4A5568">• Neighborhood Guide</text>
+                            
+                            <text x="0" y="165" font-size="11" fill="#4A5568">3. Temporary Housing</text>
+                            <text x="15" y="185" font-size="10" fill="#4A5568">• Hotels & Airbnb</text>
+                            <text x="15" y="200" font-size="10" fill="#4A5568">• Short-term Rentals</text>
+                            
+                            <text x="0" y="225" font-size="11" fill="#4A5568">4. Financial Considerations</text>
+                            <text x="15" y="245" font-size="10" fill="#4A5568">• Deposits & Utilities</text>
+                            <text x="15" y="260" font-size="10" fill="#4A5568">• Budget Planning</text>
+                        </g>
+                        
+                        <!-- Main content area -->
+                        <rect x="280" width="480" height="300" fill="white" stroke="#E2E8F0" stroke-width="1" rx="8"/>
+                        <g transform="translate(295, 20)">
+                            <text x="0" y="0" font-size="15" font-weight="bold" fill="#023047">On-Campus Housing Overview</text>
+                            <rect x="0" y="10" width="450" height="1" fill="#E2E8F0"/>
+                            
+                            <!-- Content blocks -->
+                            <rect x="0" y="25" width="450" height="12" fill="#E2E8F0" rx="2"/>
+                            <rect x="0" y="42" width="420" height="12" fill="#E2E8F0" rx="2"/>
+                            <rect x="0" y="59" width="440" height="12" fill="#E2E8F0" rx="2"/>
+                            
+                            <!-- Callout box -->
+                            <rect x="0" y="85" width="450" height="70" fill="#FFF5E6" stroke="#FFB627" stroke-width="1" rx="6"/>
+                            <text x="15" y="105" font-size="11" font-weight="bold" fill="#D69E2E">⚠️ Important Deadline</text>
+                            <text x="15" y="125" font-size="10" fill="#4A5568">Priority housing applications due:</text>
+                            <text x="15" y="140" font-size="10" font-weight="bold" fill="#023047">May 1, 2024</text>
+                            
+                            <rect x="0" y="170" width="450" height="12" fill="#E2E8F0" rx="2"/>
+                            <rect x="0" y="187" width="400" height="12" fill="#E2E8F0" rx="2"/>
+                            <rect x="0" y="204" width="430" height="12" fill="#E2E8F0" rx="2"/>
+                            
+                            <!-- Quick actions -->
+                            <g transform="translate(0, 235)">
+                                <rect width="140" height="35" fill="#0077B6" rx="6"/>
+                                <text x="70" y="22" text-anchor="middle" font-size="11" fill="white" font-weight="600">Apply Now</text>
+                                
+                                <rect x="155" width="140" height="35" fill="white" stroke="#0077B6" stroke-width="1" rx="6"/>
+                                <text x="225" y="22" text-anchor="middle" font-size="11" fill="#0077B6" font-weight="600">Download Checklist</text>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <p style="color: #4A5568; margin-top: 2rem; font-size: 1.1rem; line-height: 1.8;">Clear trust signals (verification badges, update timestamps) and structured navigation help students quickly assess credibility and find the specific information they need.</p>
+            </div>
+            
+            <!-- Wireframe 3: Search & Filter -->
+            <div>
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; color: var(--ocean-blue); margin-bottom: 2rem;">Advanced Search & Filtering</h4>
+                <svg width="100%" height="450" viewBox="0 0 900 450" style="background: #F7FAFC; border-radius: 16px; padding: 2rem;">
+                    <!-- Container -->
+                    <rect x="50" y="30" width="800" height="390" fill="white" stroke="#CBD5E0" stroke-width="2" rx="8"/>
+                    
+                    <!-- Search header -->
+                    <rect x="70" y="60" width="600" height="45" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1" rx="8"/>
+                    <text x="85" y="87" font-size="13" fill="#718096">Search: "visa extension"</text>
+                    <circle cx="650" cy="82" r="15" fill="#0077B6"/>
+                    <text x="650" y="87" text-anchor="middle" font-size="14" fill="white">🔍</text>
+                    
+                    <!-- Filter sidebar -->
+                    <g transform="translate(70, 130)">
+                        <text x="0" y="0" font-size="12" font-weight="bold" fill="#023047">Filters</text>
+                        
+                        <!-- Journey stage filter -->
+                        <text x="0" y="25" font-size="11" fill="#4A5568">Journey Stage</text>
+                        <rect x="0" y="32" width="150" height="25" fill="white" stroke="#0077B6" stroke-width="2" rx="4"/>
+                        <circle cx="10" cy="44" r="4" fill="#0077B6"/>
+                        <text x="22" y="49" font-size="10" fill="#023047">Pre-Arrival</text>
+                        
+                        <rect x="0" y="62" width="150" height="25" fill="white" stroke="#E2E8F0" stroke-width="1" rx="4"/>
+                        <circle cx="10" cy="74" r="4" fill="white" stroke="#CBD5E0" stroke-width="1"/>
+                        <text x="22" y="79" font-size="10" fill="#4A5568">First Semester</text>
+                        
+                        <rect x="0" y="92" width="150" height="25" fill="white" stroke="#E2E8F0" stroke-width="1" rx="4"/>
+                        <circle cx="10" cy="104" r="4" fill="white" stroke="#CBD5E0" stroke-width="1"/>
+                        <text x="22" y="109" font-size="10" fill="#4A5568">Career & Beyond</text>
+                        
+                        <!-- Resource type -->
+                        <text x="0" y="140" font-size="11" fill="#4A5568">Resource Type</text>
+                        <rect x="0" y="147" width="150" height="25" fill="white" stroke="#E2E8F0" stroke-width="1" rx="4"/>
+                        <circle cx="10" cy="159" r="4" fill="white" stroke="#CBD5E0" stroke-width="1"/>
+                        <text x="22" y="164" font-size="10" fill="#4A5568">Official Guides</text>
+                        
+                        <rect x="0" y="177" width="150" height="25" fill="white" stroke="#0077B6" stroke-width="2" rx="4"/>
+                        <circle cx="10" cy="189" r="4" fill="#0077B6"/>
+                        <text x="22" y="194" font-size="10" fill="#023047">Checklists</text>
+                        
+                        <rect x="0" y="207" width="150" height="25" fill="white" stroke="#E2E8F0" stroke-width="1" rx="4"/>
+                        <circle cx="10" cy="219" r="4" fill="white" stroke="#CBD5E0" stroke-width="1"/>
+                        <text x="22" y="224" font-size="10" fill="#4A5568">Video Tutorials</text>
+                    </g>
+                    
+                    <!-- Results area -->
+                    <g transform="translate(250, 130)">
+                        <text x="0" y="0" font-size="12" fill="#4A5568">Showing 8 results</text>
+                        
+                        <!-- Result cards -->
+                        <rect x="0" y="15" width="580" height="75" fill="white" stroke="#E2E8F0" stroke-width="1" rx="8"/>
+                        <rect x="15" y="30" width="8" height="45" fill="#0077B6" rx="2"/>
+                        <text x="35" y="45" font-size="13" font-weight="bold" fill="#023047">F-1 Visa Extension: Complete Checklist</text>
+                        <text x="35" y="62" font-size="10" fill="#718096">Step-by-step guide for extending your F-1 student visa status</text>
+                        <g transform="translate(35, 70)">
+                            <rect width="90" height="16" fill="#E6F7FF" rx="8"/>
+                            <text x="45" y="11" text-anchor="middle" font-size="9" fill="#0077B6">UC Davis Verified</text>
+                        </g>
+                        <text x="500" y="62" font-size="10" fill="#A0AEC0">Updated 1 week ago</text>
+                        
+                        <rect x="0" y="105" width="580" height="75" fill="white" stroke="#E2E8F0" stroke-width="1" rx="8"/>
+                        <rect x="15" y="120" width="8" height="45" fill="#90BE6D" rx="2"/>
+                        <text x="35" y="135" font-size="13" font-weight="bold" fill="#023047">Visa Document Requirements Tracker</text>
+                        <text x="35" y="152" font-size="10" fill="#718096">Interactive checklist to track all required documents for visa process</text>
+                        <g transform="translate(35, 160)">
+                            <rect width="70" height="16" fill="#F0FFF4" rx="8"/>
+                            <text x="35" y="11" text-anchor="middle" font-size="9" fill="#38A169">Essential</text>
+                        </g>
+                        <text x="500" y="152" font-size="10" fill="#A0AEC0">Updated 3 days ago</text>
+                        
+                        <rect x="0" y="195" width="580" height="75" fill="white" stroke="#E2E8F0" stroke-width="1" rx="8"/>
+                        <rect x="15" y="210" width="8" height="45" fill="#FF7B54" rx="2"/>
+                        <text x="35" y="225" font-size="13" font-weight="bold" fill="#023047">Common Visa Extension Mistakes to Avoid</text>
+                        <text x="35" y="242" font-size="10" fill="#718096">Learn from past student experiences and common pitfalls</text>
+                        <text x="500" y="242" font-size="10" fill="#A0AEC0">Updated 2 weeks ago</text>
+                    </g>
+                </svg>
+                <p style="color: #4A5568; margin-top: 2rem; font-size: 1.1rem; line-height: 1.8;">Advanced filtering by journey stage and resource type enables students to quickly narrow down search results to find exactly what they need for their current situation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="skills-container">
+            <h2 class="section-heading">PM Capabilities Demonstrated</h2>
+            
+            <div class="skills-flex">
+                <div class="skill-badge">User Research</div>
+                <div class="skill-badge">Product Roadmapping</div>
+                <div class="skill-badge">Information Architecture</div>
+                <div class="skill-badge">Content Strategy</div>
+                <div class="skill-badge">Stakeholder Management</div>
+                <div class="skill-badge">Data Analysis</div>
+                <div class="skill-badge">UX Design</div>
+                <div class="skill-badge">Feature Prioritization</div>
+                <div class="skill-badge">Launch Planning</div>
+                <div class="skill-badge">Metrics Definition</div>
+                <div class="skill-badge">Cross-Functional Leadership</div>
+                <div class="skill-badge">Product Strategy</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-cta">
+        <h2 class="section-heading" style="text-align: center; margin-bottom: 2rem;">More Product Work</h2>
+        <p style="font-size: 1.25rem; color: #4A5568; margin-bottom: 3rem;">Explore how I tackle product challenges across different domains</p>
+        <a href="index.html" class="cta-link">← Back to Portfolio</a>
+    </section>
+</body>
+</html>

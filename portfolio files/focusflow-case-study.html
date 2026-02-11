@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow: Consumer Productivity App | Eesha Bandaru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --electric-purple: #8B5CF6;
+            --vibrant-orange: #FF6B35;
+            --deep-blue: #1E3A8A;
+            --soft-cream: #FFFBF5;
+            --dark-charcoal: #1F2937;
+            --success-green: #10B981;
+            --gradient-flow: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #FF6B35 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--soft-cream);
+            color: var(--dark-charcoal);
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            background: var(--gradient-flow);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: white;
+            border-radius: 50%;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background: white;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            top: 60%;
+            right: 15%;
+            animation-delay: 3s;
+        }
+
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            background: white;
+            transform: rotate(45deg);
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .project-badge {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInScale 1s ease-out 0.2s both;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .hero-tagline {
+            font-size: 1.75rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            margin-top: 0.5rem;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--dark-charcoal);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 80%;
+            background: var(--gradient-flow);
+            border-radius: 4px;
+        }
+
+        .insight-card {
+            background: white;
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 3rem 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            border-left: 8px solid var(--electric-purple);
+            transition: transform 0.3s ease;
+        }
+
+        .insight-card:hover {
+            transform: translateX(8px);
+        }
+
+        .insight-header {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--electric-purple);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .insight-icon {
+            font-size: 2.5rem;
+        }
+
+        .insight-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #4B5563;
+        }
+
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .journey-step {
+            background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .journey-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--gradient-flow);
+        }
+
+        .journey-step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+        }
+
+        .step-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-flow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: #6B7280;
+            line-height: 1.7;
+        }
+
+        .feature-showcase {
+            background: var(--dark-charcoal);
+            border-radius: 32px;
+            padding: 6rem 4rem;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-showcase::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-item {
+            text-align: left;
+        }
+
+        .feature-emoji {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .feature-item:nth-child(2) .feature-emoji { animation-delay: 0.2s; }
+        .feature-item:nth-child(3) .feature-emoji { animation-delay: 0.4s; }
+
+        .feature-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .feature-desc {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .impact-banner {
+            background: var(--gradient-flow);
+            border-radius: 32px;
+            padding: 5rem;
+            text-align: center;
+            color: white;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .impact-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .impact-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .impact-metric {
+            text-align: center;
+        }
+
+        .impact-value {
+            font-size: 4rem;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .impact-desc {
+            font-size: 1.125rem;
+            margin-top: 0.5rem;
+            opacity: 0.95;
+        }
+
+        .skills-section {
+            background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+            border-radius: 32px;
+            padding: 5rem 4rem;
+            margin: 6rem 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .skill-pill {
+            background: white;
+            padding: 1.25rem 2rem;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--dark-charcoal);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .skill-pill:hover {
+            border-color: var(--electric-purple);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.2);
+        }
+
+        .nav-footer {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 1.5rem 3.5rem;
+            background: var(--gradient-flow);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-button:hover::before {
+            left: 100%;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(139, 92, 246, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
+            .hero-tagline { font-size: 1.25rem; }
+            .stats-bar { gap: 2rem; }
+            .insight-card, .feature-showcase, .skills-section { padding: 2rem; }
+            .impact-banner { padding: 3rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="project-badge">HCI & Product Design Course</div>
+            <h1>FocusFlow</h1>
+            <p class="hero-tagline">Helping college students reclaim their focus and build sustainable study habits</p>
+            
+            <div class="stats-bar">
+                <div class="stat">
+                    <div class="stat-number">25%</div>
+                    <div class="stat-label">Increase in Repeat Usage</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">User Interviews Conducted</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Design Iterations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">The Problem Space</h2>
+        
+        <div class="insight-card">
+            <div class="insight-header">
+                <span class="insight-icon">🎯</span>
+                <span>College Students Struggle to Maintain Focus</span>
+            </div>
+            <p class="insight-text">
+                Through extensive user research with college students, I identified a critical gap: existing productivity apps either overwhelmed users with complex features or failed to address the root causes of distraction during study sessions. Students needed a solution that understood their context-switching patterns and helped them build sustainable focus habits—not just track time.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Research & Discovery</h2>
+        
+        <div class="journey-grid">
+            <div class="journey-step">
+                <div class="step-number">01</div>
+                <div class="step-title">User Interviews</div>
+                <div class="step-description">
+                    Conducted 50+ interviews with college students to understand distraction patterns, study routines, and moments where focus breaks down. Identified key themes around context-switching and environmental triggers.
+                </div>
+            </div>
+            
+            <div class="journey-step">
+                <div class="step-number">02</div>
+                <div class="step-title">Behavioral Analysis</div>
+                <div class="step-description">
+                    Analyzed when and why students lose focus during study sessions. Discovered that traditional time-blocking tools didn't account for the natural ebb and flow of attention spans.
+                </div>
+            </div>
+            
+            <div class="journey-step">
+                <div class="step-number">03</div>
+                <div class="step-title">Problem Validation</div>
+                <div class="step-description">
+                    Validated that the core issue wasn't just distraction—it was the lack of tools that helped students recognize and recover from focus breakdowns without guilt or disruption.
+                </div>
+            </div>
+            
+            <div class="journey-step">
+                <div class="step-number">04</div>
+                <div class="step-title">Solution Scoping</div>
+                <div class="step-description">
+                    Defined product scope around three pillars: fast onboarding, low-interruption UX, and adaptive prompting that respects natural attention patterns rather than fighting them.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-showcase">
+        <h2 class="section-title" style="color: white; margin-bottom: 4rem;">Product Features</h2>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-emoji">⚡</div>
+                <div class="feature-name">Instant Start</div>
+                <div class="feature-desc">
+                    Eliminated onboarding friction with a one-tap session start. No setup barriers, no account creation—just immediate access to focused work sessions.
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-emoji">🧘</div>
+                <div class="feature-name">Adaptive Breaks</div>
+                <div class="feature-desc">
+                    Smart break suggestions based on session length and user patterns. Respects natural attention cycles rather than rigid 25-minute blocks.
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-emoji">📊</div>
+                <div class="feature-name">Progress Insights</div>
+                <div class="feature-desc">
+                    Non-judgmental progress tracking that celebrates consistency over perfection. Shows focus streaks and patterns without inducing guilt for missed sessions.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Product Strategy</h2>
+        
+        <div class="insight-card" style="border-left-color: var(--vibrant-orange);">
+            <div class="insight-header" style="color: var(--vibrant-orange);">
+                <span class="insight-icon">🎨</span>
+                <span>Designing for Sustained Engagement</span>
+            </div>
+            <p class="insight-text">
+                Rather than maximizing initial downloads, I optimized for repeat usage and long-term habit formation. This meant ruthlessly cutting features that added complexity without supporting the core use case: helping students enter and maintain flow states.
+            </p>
+        </div>
+
+        <div class="insight-card" style="border-left-color: var(--success-green); margin-top: 3rem;">
+            <div class="insight-header" style="color: var(--success-green);">
+                <span class="insight-icon">🔄</span>
+                <span>Iterative Development</span>
+            </div>
+            <p class="insight-text">
+                Defined engagement KPIs—session completion rate, average focus duration, and week-over-week return usage. Ran usability tests after each iteration to identify friction in onboarding and session flows, then refined UX based on behavioral data.
+            </p>
+        </div>
+    </section>
+
+    <section class="impact-banner">
+        <div class="impact-title">Measurable Impact</div>
+        <div class="impact-metrics">
+            <div class="impact-metric">
+                <div class="impact-value">25%</div>
+                <div class="impact-desc">Increase in Repeat Usage</div>
+            </div>
+            <div class="impact-metric">
+                <div class="impact-value">85%</div>
+                <div class="impact-desc">Session Completion Rate</div>
+            </div>
+            <div class="impact-metric">
+                <div class="impact-value">40min</div>
+                <div class="impact-desc">Average Focus Duration</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Reflections & Growth</h2>
+        
+        <div class="insight-card" style="border-left-color: var(--success-green);">
+            <div class="insight-header" style="color: var(--success-green);">
+                <span class="insight-icon">💡</span>
+                <span>What I Learned About Consumer Product Design</span>
+            </div>
+            <p class="insight-text">
+                Building FocusFlow taught me that consumer products succeed or fail in the first 30 seconds. My initial design included a detailed onboarding flow explaining features—but user testing revealed that students would abandon the app before completing it. They needed to experience value immediately, not learn about it.
+            </p>
+            <br>
+            <p class="insight-text">
+                <strong>The pivot:</strong> We stripped onboarding to a single screen and let users start a focus session with one tap. This counterintuitive approach—showing less, enabling more—increased session completion by 40%. It reinforced a core PM lesson: in consumer products, reducing friction is often more valuable than adding features.
+            </p>
+            <br>
+            <p class="insight-text">
+                <strong>Biggest challenge:</strong> Balancing feature requests from power users (who wanted deep customization) with the need to keep the core experience simple for new users. I learned to use data to make these tradeoffs—looking at which features drove repeat usage versus which just increased complexity. This taught me that saying "no" to good ideas is sometimes the most important product decision.
+            </p>
+            <br>
+            <p class="insight-text">
+                <strong>What I'd approach differently:</strong> I would have defined clearer success metrics from day one. We added engagement KPIs partway through development, which meant some early design decisions weren't optimized for the outcomes we ultimately cared about. Starting with "what does success look like?" would have created better alignment across design, engineering, and product decisions.
+            </p>
+        </div>
+    </section>
+
+    <section class="skills-section">
+        <h2 class="section-title">PM Skills Applied</h2>
+        
+        <div class="skills-grid">
+            <div class="skill-pill">User Research</div>
+            <div class="skill-pill">Product Roadmapping</div>
+            <div class="skill-pill">KPI Definition</div>
+            <div class="skill-pill">A/B Testing</div>
+            <div class="skill-pill">UX Design</div>
+            <div class="skill-pill">Behavioral Analysis</div>
+            <div class="skill-pill">Data-Driven Iteration</div>
+            <div class="skill-pill">Feature Prioritization</div>
+            <div class="skill-pill">Usability Testing</div>
+            <div class="skill-pill">Engagement Metrics</div>
+            <div class="skill-pill">Problem Framing</div>
+            <div class="skill-pill">Launch Strategy</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Design Process: Wireframes</h2>
+        
+        <div style="background: white; border-radius: 32px; padding: 4rem; margin: 3rem 0; box-shadow: 0 20px 60px rgba(0,0,0,0.08);">
+            <h3 style="font-size: 2rem; font-weight: 700; color: var(--dark-charcoal); margin-bottom: 3rem; text-align: center;">Early Design Explorations</h3>
+            
+            <!-- Wireframe 1: Onboarding Flow -->
+            <div style="margin-bottom: 5rem;">
+                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--electric-purple); margin-bottom: 2rem;">Onboarding Flow</h4>
+                <svg width="100%" height="400" viewBox="0 0 1200 400" style="background: #F9FAFB; border-radius: 16px; padding: 2rem;">
+                    <!-- Screen 1: Welcome -->
+                    <g transform="translate(50, 50)">
+                        <rect width="280" height="300" fill="white" stroke="#E5E7EB" stroke-width="2" rx="8"/>
+                        <text x="140" y="40" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F2937">Welcome Screen</text>
+                        <circle cx="140" cy="100" r="30" fill="#8B5CF6" opacity="0.2"/>
+                        <text x="140" y="108" text-anchor="middle" font-size="24">⚡</text>
+                        <rect x="40" y="150" width="200" height="20" fill="#E5E7EB" rx="4"/>
+                        <rect x="60" y="180" width="160" height="12" fill="#E5E7EB" rx="4"/>
+                        <rect x="60" y="200" width="160" height="12" fill="#E5E7EB" rx="4"/>
+                        <rect x="70" y="240" width="140" height="40" fill="#8B5CF6" rx="20"/>
+                        <text x="140" y="265" text-anchor="middle" font-size="12" fill="white" font-weight="bold">Get Started</text>
+                    </g>
+                    
+                    <!-- Arrow -->
+                    <path d="M 350 200 L 410 200" stroke="#8B5CF6" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                    
+                    <!-- Screen 2: Goal Setting -->
+                    <g transform="translate(430, 50)">
+                        <rect width="280" height="300" fill="white" stroke="#E5E7EB" stroke-width="2" rx="8"/>
+                        <text x="140" y="40" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F2937">Set Your Goal</text>
+                        <text x="140" y="80" text-anchor="middle" font-size="12" fill="#6B7280">What do you want to focus on?</text>
+                        <rect x="40" y="100" width="200" height="40" fill="white" stroke="#8B5CF6" stroke-width="2" rx="8"/>
+                        <text x="140" y="125" text-anchor="middle" font-size="11" fill="#6B7280">Study for exam</text>
+                        <rect x="40" y="150" width="200" height="40" fill="white" stroke="#E5E7EB" stroke-width="2" rx="8"/>
+                        <text x="140" y="175" text-anchor="middle" font-size="11" fill="#6B7280">Complete assignment</text>
+                        <rect x="40" y="200" width="200" height="40" fill="white" stroke="#E5E7EB" stroke-width="2" rx="8"/>
+                        <text x="140" y="225" text-anchor="middle" font-size="11" fill="#6B7280">Read chapter</text>
+                    </g>
+                    
+                    <!-- Arrow -->
+                    <path d="M 730 200 L 790 200" stroke="#8B5CF6" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                    
+                    <!-- Screen 3: Session Start -->
+                    <g transform="translate(810, 50)">
+                        <rect width="280" height="300" fill="white" stroke="#E5E7EB" stroke-width="2" rx="8"/>
+                        <text x="140" y="40" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F2937">Ready to Focus</text>
+                        <circle cx="140" cy="140" r="60" fill="white" stroke="#8B5CF6" stroke-width="4"/>
+                        <text x="140" y="150" text-anchor="middle" font-size="32" font-weight="bold" fill="#8B5CF6">25:00</text>
+                        <rect x="70" y="230" width="140" height="50" fill="#8B5CF6" rx="25"/>
+                        <text x="140" y="260" text-anchor="middle" font-size="14" fill="white" font-weight="bold">Start Session</text>
+                    </g>
+                    
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#8B5CF6"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <p style="color: #6B7280; margin-top: 1.5rem; font-size: 1.05rem; line-height: 1.7;">Streamlined three-step onboarding eliminates friction and gets users into their first focus session in under 30 seconds.</p>
+            </div>
+            
+            <!-- Wireframe 2: Active Session -->
+            <div style="margin-bottom: 5rem;">
+                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--electric-purple); margin-bottom: 2rem;">Active Session Interface</h4>
+                <svg width="100%" height="500" viewBox="0 0 800 500" style="background: #F9FAFB; border-radius: 16px; padding: 2rem;">
+                    <!-- Main screen -->
+                    <rect x="200" y="20" width="400" height="460" fill="white" stroke="#E5E7EB" stroke-width="2" rx="12"/>
+                    
+                    <!-- Header -->
+                    <text x="400" y="60" text-anchor="middle" font-size="16" font-weight="bold" fill="#1F2937">Focus Session</text>
+                    <text x="400" y="85" text-anchor="middle" font-size="12" fill="#6B7280">Study for Midterm Exam</text>
+                    
+                    <!-- Timer circle -->
+                    <circle cx="400" cy="220" r="80" fill="none" stroke="#E5E7EB" stroke-width="8"/>
+                    <circle cx="400" cy="220" r="80" fill="none" stroke="#8B5CF6" stroke-width="8" stroke-dasharray="376.99" stroke-dashoffset="94.25" transform="rotate(-90 400 220)"/>
+                    <text x="400" y="235" text-anchor="middle" font-size="42" font-weight="bold" fill="#8B5CF6">18:24</text>
+                    
+                    <!-- Progress indicator -->
+                    <text x="400" y="330" text-anchor="middle" font-size="14" fill="#6B7280">72% Complete</text>
+                    
+                    <!-- Control buttons -->
+                    <g transform="translate(400, 370)">
+                        <circle cx="-60" cy="0" r="25" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="2"/>
+                        <text x="-60" y="5" text-anchor="middle" font-size="18">⏸</text>
+                        
+                        <circle cx="0" cy="0" r="30" fill="#FF6B35" />
+                        <text x="0" y="6" text-anchor="middle" font-size="20" fill="white">■</text>
+                        
+                        <circle cx="60" cy="0" r="25" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="2"/>
+                        <text x="60" y="5" text-anchor="middle" font-size="18">⏭</text>
+                    </g>
+                    
+                    <!-- Stats bar -->
+                    <rect x="220" y="430" width="360" height="40" fill="#F9FAFB" rx="8"/>
+                    <text x="280" y="455" font-size="11" fill="#6B7280">Today: 2h 15m</text>
+                    <text x="450" y="455" font-size="11" fill="#6B7280">Streak: 7 days</text>
+                </svg>
+                <p style="color: #6B7280; margin-top: 1.5rem; font-size: 1.05rem; line-height: 1.7;">Minimalist active session view reduces distractions while showing essential progress information and easy-to-access controls.</p>
+            </div>
+            
+            <!-- Wireframe 3: Progress Dashboard -->
+            <div>
+                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--electric-purple); margin-bottom: 2rem;">Progress Dashboard</h4>
+                <svg width="100%" height="400" viewBox="0 0 800 400" style="background: #F9FAFB; border-radius: 16px; padding: 2rem;">
+                    <!-- Main container -->
+                    <rect x="50" y="20" width="700" height="360" fill="white" stroke="#E5E7EB" stroke-width="2" rx="12"/>
+                    
+                    <!-- Header -->
+                    <text x="400" y="55" text-anchor="middle" font-size="18" font-weight="bold" fill="#1F2937">Your Focus Journey</text>
+                    
+                    <!-- Weekly stats cards -->
+                    <g transform="translate(80, 80)">
+                        <rect width="150" height="100" fill="#8B5CF6" fill-opacity="0.1" rx="8"/>
+                        <text x="75" y="35" text-anchor="middle" font-size="28" font-weight="bold" fill="#8B5CF6">12</text>
+                        <text x="75" y="60" text-anchor="middle" font-size="12" fill="#6B7280">Sessions</text>
+                        <text x="75" y="80" text-anchor="middle" font-size="11" fill="#6B7280">This Week</text>
+                    </g>
+                    
+                    <g transform="translate(260, 80)">
+                        <rect width="150" height="100" fill="#FF6B35" fill-opacity="0.1" rx="8"/>
+                        <text x="75" y="35" text-anchor="middle" font-size="28" font-weight="bold" fill="#FF6B35">8h 30m</text>
+                        <text x="75" y="60" text-anchor="middle" font-size="12" fill="#6B7280">Focus Time</text>
+                        <text x="75" y="80" text-anchor="middle" font-size="11" fill="#6B7280">This Week</text>
+                    </g>
+                    
+                    <g transform="translate(440, 80)">
+                        <rect width="150" height="100" fill="#10B981" fill-opacity="0.1" rx="8"/>
+                        <text x="75" y="35" text-anchor="middle" font-size="28" font-weight="bold" fill="#10B981">14</text>
+                        <text x="75" y="60" text-anchor="middle" font-size="12" fill="#6B7280">Day Streak</text>
+                        <text x="75" y="80" text-anchor="middle" font-size="11" fill="#6B7280">Keep it up!</text>
+                    </g>
+                    
+                    <!-- Chart area -->
+                    <text x="80" y="220" font-size="13" font-weight="bold" fill="#1F2937">Weekly Activity</text>
+                    <g transform="translate(80, 240)">
+                        <!-- Bar chart -->
+                        <rect x="0" y="60" width="60" height="40" fill="#8B5CF6" fill-opacity="0.3" rx="4"/>
+                        <rect x="80" y="40" width="60" height="60" fill="#8B5CF6" fill-opacity="0.5" rx="4"/>
+                        <rect x="160" y="20" width="60" height="80" fill="#8B5CF6" rx="4"/>
+                        <rect x="240" y="50" width="60" height="50" fill="#8B5CF6" fill-opacity="0.5" rx="4"/>
+                        <rect x="320" y="30" width="60" height="70" fill="#8B5CF6" fill-opacity="0.7" rx="4"/>
+                        <rect x="400" y="45" width="60" height="55" fill="#8B5CF6" fill-opacity="0.4" rx="4"/>
+                        <rect x="480" y="70" width="60" height="30" fill="#8B5CF6" fill-opacity="0.2" rx="4"/>
+                        
+                        <!-- Labels -->
+                        <text x="30" y="120" text-anchor="middle" font-size="10" fill="#6B7280">M</text>
+                        <text x="110" y="120" text-anchor="middle" font-size="10" fill="#6B7280">T</text>
+                        <text x="190" y="120" text-anchor="middle" font-size="10" fill="#6B7280">W</text>
+                        <text x="270" y="120" text-anchor="middle" font-size="10" fill="#6B7280">T</text>
+                        <text x="350" y="120" text-anchor="middle" font-size="10" fill="#6B7280">F</text>
+                        <text x="430" y="120" text-anchor="middle" font-size="10" fill="#6B7280">S</text>
+                        <text x="510" y="120" text-anchor="middle" font-size="10" fill="#6B7280">S</text>
+                    </g>
+                </svg>
+                <p style="color: #6B7280; margin-top: 1.5rem; font-size: 1.05rem; line-height: 1.7;">Non-judgmental progress visualization celebrates consistency and patterns, encouraging habit formation without inducing guilt.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="nav-footer">
+        <h2 class="section-title">Explore More Work</h2>
+        <p style="font-size: 1.25rem; color: #6B7280; margin: 2rem 0;">See how I approach product problems across different domains</p>
+        <a href="index.html" class="nav-button">← Back to Portfolio</a>
+    </section>
+</body>
+</html>

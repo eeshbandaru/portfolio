@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restore: Building Trust in the $12B EV Battery Market | Eesha Bandaru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Public+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --electric-green: #00D4AA;
+            --deep-navy: #0A2540;
+            --bright-teal: #00C2CB;
+            --warm-orange: #FF6B35;
+            --soft-cream: #FFFBF5;
+            --charcoal: #1A1A1A;
+            --light-gray: #F8F9FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Public Sans', sans-serif;
+            background: var(--soft-cream);
+            color: var(--charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--deep-navy) 0%, #1a3a52 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .circuit-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 170, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 170, 0.1) 1px, transparent 1px);
+            background-size: 100px 100px;
+            opacity: 0.3;
+            animation: circuitMove 30s linear infinite;
+        }
+
+        @keyframes circuitMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        .hero-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .startup-badge {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: rgba(0, 212, 170, 0.15);
+            border: 2px solid rgba(0, 212, 170, 0.3);
+            border-radius: 50px;
+            color: var(--electric-green);
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation: fadeSlideIn 0.8s ease-out;
+        }
+
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            animation: fadeSlideIn 1s ease-out 0.2s both;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.25rem, 3vw, 2rem);
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 900px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            animation: fadeSlideIn 1s ease-out 0.4s both;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            animation: fadeSlideIn 1s ease-out both;
+        }
+
+        .stat-box:nth-child(1) { animation-delay: 0.6s; }
+        .stat-box:nth-child(2) { animation-delay: 0.7s; }
+        .stat-box:nth-child(3) { animation-delay: 0.8s; }
+        .stat-box:nth-child(4) { animation-delay: 0.9s; }
+
+        .stat-box:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-value {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--electric-green);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Content Sections */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--deep-navy);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, var(--electric-green), var(--bright-teal));
+            border-radius: 3px;
+        }
+
+        .insight-box {
+            background: white;
+            border-radius: 28px;
+            padding: 4rem;
+            margin: 3rem 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            border-left: 6px solid var(--warm-orange);
+        }
+
+        .insight-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .insight-title {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 2rem;
+            color: var(--warm-orange);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .insight-content {
+            font-size: 1.25rem;
+            color: #4A5568;
+            line-height: 1.8;
+        }
+
+        /* Research Grid */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .research-card {
+            background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
+            border-radius: 24px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border-top: 4px solid var(--electric-green);
+        }
+
+        .research-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0, 212, 170, 0.15);
+        }
+
+        .card-number {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 5rem;
+            font-weight: 800;
+            color: var(--electric-green);
+            opacity: 0.15;
+            position: absolute;
+            right: 1.5rem;
+            top: 1rem;
+        }
+
+        .card-heading {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: var(--deep-navy);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-text {
+            color: #4A5568;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Table Styling */
+        .data-table {
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            margin: 3rem 0;
+        }
+
+        .data-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            background: var(--deep-navy);
+            color: white;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .data-table td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #E2E8F0;
+            color: #4A5568;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover {
+            background: #F7FAFC;
+        }
+
+        .highlight-stat {
+            font-weight: 700;
+            color: var(--electric-green);
+        }
+
+        /* Prototype Section */
+        .prototype-section {
+            background: var(--deep-navy);
+            border-radius: 40px;
+            padding: 6rem 4rem;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prototype-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 212, 170, 0.15) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        .prototype-title {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .prototype-description {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.25rem;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .prototype-container {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .prototype-iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 16px;
+        }
+
+        /* Quote Section */
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .quote-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--bright-teal);
+            font-style: italic;
+            color: #4A5568;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .quote-card::before {
+            content: '"';
+            font-size: 6rem;
+            font-family: 'Cabinet Grotesk', sans-serif;
+            color: var(--electric-green);
+            opacity: 0.2;
+            position: absolute;
+            top: -1rem;
+            left: 1.5rem;
+        }
+
+        .quote-impact {
+            margin-top: 1rem;
+            font-style: normal;
+            font-weight: 700;
+            color: var(--deep-navy);
+            font-size: 0.9rem;
+        }
+
+        /* Impact Banner */
+        .impact-banner {
+            background: linear-gradient(135deg, var(--electric-green) 0%, var(--bright-teal) 100%);
+            border-radius: 40px;
+            padding: 6rem 4rem;
+            text-align: center;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-banner::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            top: 0;
+            left: 0;
+        }
+
+        .impact-heading {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .impact-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .impact-metric {
+            text-align: center;
+        }
+
+        .impact-number {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+        }
+
+        .impact-label {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.125rem;
+            margin-top: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Reflections Section */
+        .reflections-section {
+            background: white;
+            border-radius: 40px;
+            padding: 6rem 4rem;
+            margin: 6rem 0;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+        }
+
+        .reflection-blocks {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .reflection-block {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .reflection-icon-circle {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--electric-green), var(--bright-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 15px 40px rgba(0, 212, 170, 0.3);
+        }
+
+        .reflection-content h3 {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 2rem;
+            color: var(--deep-navy);
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+        }
+
+        .reflection-content p {
+            color: #4A5568;
+            line-height: 1.85;
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Skills Section */
+        .skills-showcase {
+            background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
+            border-radius: 40px;
+            padding: 6rem 4rem;
+            margin: 6rem 0;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .skill-badge {
+            padding: 1.25rem 2.5rem;
+            background: white;
+            border: 2px solid var(--electric-green);
+            border-radius: 50px;
+            font-weight: 700;
+            color: var(--deep-navy);
+            transition: all 0.35s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-badge:hover {
+            background: var(--electric-green);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 212, 170, 0.3);
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 1.75rem 4.5rem;
+            background: linear-gradient(135deg, var(--electric-green), var(--bright-teal));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 20px 50px rgba(0, 212, 170, 0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 60px rgba(0, 212, 170, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
+            .hero-tagline { font-size: 1.35rem; }
+            .insight-box, .prototype-section, .reflections-section, .skills-showcase, .impact-banner { padding: 3rem 2rem; }
+            .reflection-block { grid-template-columns: 1fr; }
+            .reflection-icon-circle { margin: 0 auto 2rem; }
+            .prototype-iframe { height: 600px; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="circuit-pattern"></div>
+        <div class="hero-wrapper">
+            <div class="startup-badge">Co-Founder & Product Lead | 2024-2025</div>
+            <h1>Restore</h1>
+            <p class="hero-tagline">
+                Building trust in the $12B second-life EV battery market by translating complex safety data into clear decision signals
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <div class="stat-value">73%</div>
+                    <div class="stat-description">Trust Signal Comprehension</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">2x</div>
+                    <div class="stat-description">Purchase Intent Increase</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">50+</div>
+                    <div class="stat-description">User Interviews Conducted</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">SMUD</div>
+                    <div class="stat-description">Pilot Partnership Secured</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2 class="section-title">The Market Opportunity</h2>
+        
+        <div class="insight-box">
+            <div class="insight-icon">⚡</div>
+            <div class="insight-title">A $12B Market Blocked by Trust Paralysis</div>
+            <p class="insight-content">
+                The second-life EV battery market represents a massive sustainability opportunity, but consumer adoption remains below 5%. The problem isn't demand—it's trust. Buyers can't evaluate the safety and longevity of repurposed batteries, leading to decision paralysis and abandoned purchases.
+            </p>
+            <br>
+            <p class="insight-content">
+                Through 50+ user interviews, we discovered that 68% of potential buyers abandon purchases not because they lack information, but because they can't translate technical specs (2,847 cycles, 87% capacity) into what matters: "Is this safe for my garage?" and "Will this last 5 years?"
+            </p>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2 class="section-title">Research & Discovery</h2>
+        
+        <div class="research-grid">
+            <div class="research-card">
+                <div class="card-number">01</div>
+                <div class="card-heading">Deep User Research</div>
+                <div class="card-text">
+                    Conducted 50+ interviews with potential buyers to understand trust barriers, decision-making patterns, and information needs. Discovered that the core issue wasn't lack of data—it was lack of a decision framework.
+                </div>
+            </div>
+            
+            <div class="research-card">
+                <div class="card-number">02</div>
+                <div class="card-heading">Trust Barrier Analysis</div>
+                <div class="card-text">
+                    Identified three critical trust gaps: safety verification (84%), lifespan prediction (76%), and seller credibility (68%). Each required a different solution approach, from third-party certification to translated timelines.
+                </div>
+            </div>
+            
+            <div class="research-card">
+                <div class="card-number">03</div>
+                <div class="card-heading">Competitive Landscape</div>
+                <div class="card-text">
+                    Analyzed existing marketplaces and found that all showed raw technical specs without translation. No competitor had solved the trust-to-purchase conversion problem, creating a clear product differentiation opportunity.
+                </div>
+            </div>
+        </div>
+
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Trust Barrier</th>
+                        <th>% of Users</th>
+                        <th>Current Solution</th>
+                        <th>Why It Fails</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Safety verification unclear</td>
+                        <td class="highlight-stat">84%</td>
+                        <td>Seller self-reports condition</td>
+                        <td>No third-party validation</td>
+                    </tr>
+                    <tr>
+                        <td>Can't predict lifespan</td>
+                        <td class="highlight-stat">76%</td>
+                        <td>Raw cycle count displayed</td>
+                        <td>Users can't translate to years</td>
+                    </tr>
+                    <tr>
+                        <td>Seller credibility unknown</td>
+                        <td class="highlight-stat">68%</td>
+                        <td>Generic marketplace ratings</td>
+                        <td>New sellers have no history</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2 class="section-title">Product Hypothesis</h2>
+        
+        <div class="insight-box" style="border-left-color: var(--bright-teal);">
+            <div class="insight-icon">💡</div>
+            <div class="insight-title" style="color: var(--bright-teal);">Translating Complexity Into Trust</div>
+            <p class="insight-content">
+                If we translate complex battery health data into clear trust signals at the point of decision, we can unlock mainstream adoption by removing cognitive burden from high-stakes purchases.
+            </p>
+            <br>
+            <p class="insight-content">
+                <strong>The solution:</strong> A real-time tiered trust system that converts technical metrics into three simple signals: Safety (UL certification badge), Lifespan (5-8 years vs. cycle counts), and Seller credibility (verification score). Progressive disclosure allows power users to dive deeper while keeping the core experience simple.
+            </p>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2 class="section-title">User Feedback That Shaped The Product</h2>
+        
+        <div class="quote-grid">
+            <div class="quote-card">
+                I don't need to know the exact cycle count. I just need to know: is this safe for my garage, and will it last 5 years?
+                <div class="quote-impact">→ Informed lifespan tier feature</div>
+            </div>
+            
+            <div class="quote-card">
+                If there's no third-party verification, I assume the seller is hiding something. Even if they're not.
+                <div class="quote-impact">→ Drove UL partnership priority</div>
+            </div>
+            
+            <div class="quote-card">
+                The moment I see a certification badge, I relax. Without it, every spec feels like a gamble.
+                <div class="quote-impact">→ Validated badge-first hierarchy</div>
+            </div>
+            
+            <div class="quote-card">
+                I want to trust the score, but I also want to verify it myself.
+                <div class="quote-impact">→ Led to progressive disclosure design</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="prototype-section">
+        <h2 class="prototype-title">Interactive Prototype</h2>
+        <p class="prototype-description">
+            Explore the trust system we built. Toggle between the old spec-heavy listing and our new trust-first design to see how we transformed the buyer experience.
+        </p>
+        
+        <div class="prototype-container">
+            <a href="restore-prototype.html" target="_blank" style="display: block; text-align: center; padding: 4rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; text-decoration: none; transition: all 0.3s ease;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">🔋</div>
+                <div style="font-family: 'Cabinet Grotesk', sans-serif; font-size: 2rem; color: white; font-weight: 700; margin-bottom: 1rem;">Launch Interactive Prototype</div>
+                <div style="color: rgba(255,255,255,0.9); font-size: 1.1rem;">Click to explore the before/after comparison →</div>
+            </a>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2 class="section-title">Product Strategy & Execution</h2>
+        
+        <div class="research-grid">
+            <div class="research-card">
+                <div class="card-number">01</div>
+                <div class="card-heading">Rapid Iteration</div>
+                <div class="card-text">
+                    Killed v1 after 15 user tests showed information hierarchy failures. Pivoted to trust-first design based on data, not intuition. Each version was tested with real users before committing engineering resources.
+                </div>
+            </div>
+            
+            <div class="research-card">
+                <div class="card-number">02</div>
+                <div class="card-heading">Cross-Functional Leadership</div>
+                <div class="card-text">
+                    Partnered with engineering, design, data science, and external safety stakeholders (UL) to automate verification and surface credible trust signals at key interaction points throughout the buyer journey.
+                </div>
+            </div>
+            
+            <div class="research-card">
+                <div class="card-number">03</div>
+                <div class="card-heading">Data-Driven Decisions</div>
+                <div class="card-text">
+                    Used AI to compress research synthesis from 20 hours to 2 hours. Defined clear KPIs (trust comprehension, time-to-decision, purchase intent) and measured rigorously to guide iteration and validate hypotheses.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2 class="section-title">Strategic Choices</h2>
+        
+        <div class="insight-box" style="border-left-color: var(--warm-orange);">
+            <div class="insight-icon">🎯</div>
+            <div class="insight-title" style="color: var(--warm-orange);">What We Chose NOT to Build</div>
+            <p class="insight-content">
+                <strong>Peer comparison tools:</strong> Testing showed comparing 8+ options increased decision paralysis. We prioritized single-listing trust for v1 over multi-listing comparison features.
+            </p>
+            <br>
+            <p class="insight-content">
+                <strong>Community reviews:</strong> 80% of sellers were first-time with no review history. We invested in third-party certification instead of building a reviews system that would be empty at launch.
+            </p>
+            <br>
+            <p class="insight-content">
+                <strong>Price optimization:</strong> Research showed trust mattered 3x more than price in purchase decisions. We focused resources on trust signals rather than pricing tools, delivering better ROI.
+            </p>
+        </div>
+    </section>
+
+    <section class="impact-banner">
+        <h2 class="impact-heading">Measurable Impact</h2>
+        <div class="impact-metrics">
+            <div class="impact-metric">
+                <div class="impact-number">73%</div>
+                <div class="impact-label">Trust Signal Comprehension</div>
+            </div>
+            <div class="impact-metric">
+                <div class="impact-number">4.2/5</div>
+                <div class="impact-label">Purchase Intent Score</div>
+            </div>
+            <div class="impact-metric">
+                <div class="impact-number">5 sec</div>
+                <div class="impact-label">Average Time to Trust Decision</div>
+            </div>
+            <div class="impact-metric">
+                <div class="impact-number">89%</div>
+                <div class="impact-label">Understood Lifespan Translation</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="reflections-section">
+            <h2 class="section-title">Reflections & Personal Growth</h2>
+            
+            <div class="reflection-blocks">
+                <div class="reflection-block">
+                    <div class="reflection-icon-circle">🚀</div>
+                    <div class="reflection-content">
+                        <h3>The Power of Rapid Testing</h3>
+                        <p>
+                            My biggest learning was the value of killing ideas fast. We spent 3 weeks building v1, then killed it after 15 user tests. This felt painful at the time, but it saved us months of building the wrong thing. Every subsequent pivot came from user feedback, not intuition.
+                        </p>
+                        <p>
+                            <strong>Key insight:</strong> The teams that ship fastest aren't necessarily the ones that code fastest—they're the ones that validate fastest. Our AI-powered workflow (Claude for research synthesis, v0 for prototyping) let us test 5 versions where traditional teams would commit to 1. This velocity multiplier was the difference between finding product-market fit and guessing.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="reflection-block">
+                    <div class="reflection-icon-circle">🤝</div>
+                    <div class="reflection-content">
+                        <h3>Navigating Stakeholder Complexity</h3>
+                        <p>
+                            Working with external partners (UL for certification) taught me that stakeholder alignment isn't about consensus—it's about clarity. UL cared about maintaining certification standards; we cared about speed to market. The breakthrough came when we stopped trying to compromise and started mapping out what each party absolutely needed vs. what was negotiable.
+                        </p>
+                        <p>
+                            We automated 95% of the verification process while maintaining UL's quality standards by focusing on edge case handling rather than trying to automate everything perfectly. This experience taught me that successful B2B2C products require thinking in layers: what does each stakeholder actually need to say yes?
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="reflection-block">
+                    <div class="reflection-icon-circle">📊</div>
+                    <div class="reflection-content">
+                        <h3>When Data Should Override Intuition</h3>
+                        <p>
+                            I initially believed buyers wanted exhaustive comparison tools—it seemed obvious that more information = better decisions. User testing proved me completely wrong. When we showed 8+ battery options, decision paralysis increased. The data was clear: trust-first, single-listing optimization beat feature-rich comparison.
+                        </p>
+                        <p>
+                            This taught me to hold my product instincts loosely and data tightly. AI accelerated this learning loop: we could synthesize 50 interviews in hours, spot patterns I'd have missed, and test hypotheses same-day. The best product decisions came from when I used AI to challenge my assumptions, not just validate them.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="reflection-block">
+                    <div class="reflection-icon-circle">🔄</div>
+                    <div class="reflection-content">
+                        <h3>What I'd Do Differently</h3>
+                        <p>
+                            <strong>Test pricing earlier:</strong> We validated trust extensively but didn't prototype pricing tiers until late in the process. I should have tested trust-price trade-offs simultaneously—would users pay more for higher trust scores? This gap meant we shipped without clear monetization validation.
+                        </p>
+                        <p>
+                            <strong>Segment research from day one:</strong> Early interviews lumped all buyers together. Only later did we realize first-time buyers, repeat purchasers, and DIY enthusiasts had completely different needs. If I could redo it, I'd segment users in the first 10 interviews, not after 30.
+                        </p>
+                        <p>
+                            <strong>Build seller tools sooner:</strong> We obsessed over buyer UX but neglected seller experience. A simple dashboard showing "add UL cert to go from 6.8 → 8.4 trust score" would have improved inventory quality faster. Future projects will treat both sides of the marketplace as equally important from day one.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="skills-showcase">
+            <h2 class="section-title">PM Capabilities Demonstrated</h2>
+            
+            <div class="skills-tags">
+                <div class="skill-badge">0→1 Product Development</div>
+                <div class="skill-badge">User Research at Scale</div>
+                <div class="skill-badge">Trust & Safety Design</div>
+                <div class="skill-badge">B2C Marketplace Strategy</div>
+                <div class="skill-badge">Cross-Functional Leadership</div>
+                <div class="skill-badge">AI-Powered Workflows</div>
+                <div class="skill-badge">Rapid Prototyping</div>
+                <div class="skill-badge">Data Analysis</div>
+                <div class="skill-badge">A/B Testing</div>
+                <div class="skill-badge">KPI Definition</div>
+                <div class="skill-badge">Stakeholder Management</div>
+                <div class="skill-badge">MVP Scoping</div>
+                <div class="skill-badge">Information Architecture</div>
+                <div class="skill-badge">Progressive Disclosure</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-cta">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 2.5rem;">Explore More Work</h2>
+        <p style="font-size: 1.3rem; color: #4A5568; margin-bottom: 3.5rem;">See how I approach product challenges across different domains</p>
+        <a href="index.html" class="back-button">← Back to Portfolio</a>
+    </section>
+</body>
+</html>

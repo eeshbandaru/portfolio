@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moo'd: Mental Health Support App | Eesha Bandaru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lavender: #B4A7D6;
+            --soft-peach: #FFD5C2;
+            --mint-green: #A8E6CF;
+            --powder-blue: #C8E7F5;
+            --warm-gray: #F5F1ED;
+            --deep-plum: #4A3F5C;
+            --gentle-yellow: #FFF8DC;
+            --rose-quartz: #F7CAC9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--warm-gray);
+            color: var(--deep-plum);
+            line-height: 1.7;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--powder-blue) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .organic-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            filter: blur(60px);
+            animation: gentleFloat 15s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--soft-peach);
+            top: -10%;
+            right: -10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--mint-green);
+            bottom: -15%;
+            left: -5%;
+            animation-delay: 3s;
+        }
+
+        .shape-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--gentle-yellow);
+            top: 40%;
+            left: 50%;
+            animation-delay: 6s;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.1); }
+        }
+
+        .hero-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50px;
+            color: var(--deep-plum);
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            animation: fadeSlideDown 0.8s ease-out;
+        }
+
+        @keyframes fadeSlideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 6rem;
+            font-weight: 600;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            text-shadow: 0 4px 20px rgba(74, 63, 92, 0.2);
+            animation: fadeScale 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .hero-description {
+            font-size: 1.75rem;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            font-weight: 300;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            margin-top: 4rem;
+        }
+
+        .metric-item {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 24px;
+            padding: 2.5rem 3rem;
+            min-width: 200px;
+            transition: all 0.4s ease;
+            animation: fadeSlideUp 1s ease-out both;
+        }
+
+        .metric-item:nth-child(1) { animation-delay: 0.6s; }
+        .metric-item:nth-child(2) { animation-delay: 0.7s; }
+        .metric-item:nth-child(3) { animation-delay: 0.8s; }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .metric-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 20px 60px rgba(74, 63, 92, 0.2);
+        }
+
+        .metric-value {
+            font-family: 'Crimson Pro', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+        }
+
+        .metric-text {
+            margin-top: 0.75rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+        }
+
+        .section-label {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--deep-plum);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-label::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lavender), var(--mint-green));
+            border-radius: 2px;
+        }
+
+        .context-box {
+            background: white;
+            border-radius: 32px;
+            padding: 4.5rem;
+            margin: 3rem 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(180, 167, 214, 0.2);
+        }
+
+        .context-emoji {
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .context-heading {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.25rem;
+            color: var(--lavender);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .context-body {
+            font-size: 1.25rem;
+            color: #5A5568;
+            line-height: 1.9;
+        }
+
+        .discovery-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .discovery-card {
+            background: linear-gradient(135deg, #FDFBF7 0%, #F9F5F0 100%);
+            border-radius: 28px;
+            padding: 3.5rem 3rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discovery-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--lavender), var(--soft-peach));
+        }
+
+        .discovery-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--lavender);
+            box-shadow: 0 25px 60px rgba(180, 167, 214, 0.15);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .card-heading {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.85rem;
+            color: var(--deep-plum);
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+        }
+
+        .card-text {
+            color: #6B6578;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .solution-area {
+            background: var(--deep-plum);
+            border-radius: 40px;
+            padding: 7rem 5rem;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-area::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -20%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(180, 167, 214, 0.2) 0%, transparent 70%);
+            animation: slowPulse 10s ease-in-out infinite;
+        }
+
+        @keyframes slowPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.15); opacity: 0.5; }
+        }
+
+        .solution-heading {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .features-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-block {
+            text-align: center;
+        }
+
+        .feature-circle {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--lavender), var(--powder-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin: 0 auto 2rem;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 40px rgba(180, 167, 214, 0.3);
+        }
+
+        .feature-block:hover .feature-circle {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .feature-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+        }
+
+        .feature-detail {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .strategy-section {
+            background: white;
+            border-radius: 40px;
+            padding: 6rem 5rem;
+            margin: 6rem 0;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.07);
+        }
+
+        .strategy-points {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .strategy-point {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .point-icon-circle {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--soft-peach), var(--rose-quartz));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(255, 213, 194, 0.3);
+        }
+
+        .point-content h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: var(--deep-plum);
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+        }
+
+        .point-content p {
+            color: #6B6578;
+            line-height: 1.85;
+            font-size: 1.15rem;
+        }
+
+        .results-banner {
+            background: linear-gradient(135deg, var(--mint-green) 0%, var(--powder-blue) 100%);
+            border-radius: 40px;
+            padding: 6rem 5rem;
+            text-align: center;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .results-banner::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            top: 0;
+            left: 0;
+        }
+
+        .results-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            color: var(--deep-plum);
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .results-flex {
+            display: flex;
+            justify-content: center;
+            gap: 6rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .result-block {
+            text-align: center;
+        }
+
+        .result-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--deep-plum);
+        }
+
+        .result-label {
+            font-size: 1.25rem;
+            color: var(--deep-plum);
+            margin-top: 0.75rem;
+            font-weight: 600;
+        }
+
+        .skills-area {
+            background: linear-gradient(135deg, #FDFBF7 0%, #F9F5F0 100%);
+            border-radius: 40px;
+            padding: 6rem 5rem;
+            margin: 6rem 0;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .skill-tag {
+            padding: 1.25rem 2.5rem;
+            background: white;
+            border: 2px solid var(--lavender);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--deep-plum);
+            transition: all 0.35s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+            font-size: 1.05rem;
+        }
+
+        .skill-tag:hover {
+            background: var(--lavender);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(180, 167, 214, 0.25);
+        }
+
+        .footer-section {
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .footer-link {
+            display: inline-block;
+            padding: 1.75rem 4.5rem;
+            background: linear-gradient(135deg, var(--lavender), var(--powder-blue));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 20px 50px rgba(180, 167, 214, 0.3);
+        }
+
+        .footer-link:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 60px rgba(180, 167, 214, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3.5rem; }
+            .section-label { font-size: 2.5rem; }
+            .hero-description { font-size: 1.35rem; }
+            .context-box, .solution-area, .strategy-section, .skills-area, .results-banner { padding: 3rem 2rem; }
+            .strategy-point { grid-template-columns: 1fr; }
+            .point-icon-circle { margin: 0 auto 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="organic-shape shape-1"></div>
+        <div class="organic-shape shape-2"></div>
+        <div class="organic-shape shape-3"></div>
+        
+        <div class="hero-wrapper">
+            <div class="hero-badge">Mental Health & Wellbeing</div>
+            <h1>Moo'd</h1>
+            <p class="hero-description">
+                Building consistent mental health support through daily check-ins, journaling, and mood tracking for UC Davis students
+            </p>
+            
+            <div class="hero-metrics">
+                <div class="metric-item">
+                    <div class="metric-value">35%</div>
+                    <div class="metric-text">Increase in Daily Engagement</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">80+</div>
+                    <div class="metric-text">Students Interviewed</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">Full</div>
+                    <div class="metric-text">Product Launch Cycle</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <h2 class="section-label">Understanding the Need</h2>
+        
+        <div class="context-box">
+            <div class="context-emoji">💭</div>
+            <div class="context-heading">The Mental Health Support Gap</div>
+            <p class="context-body">
+                Through extensive user research with UC Davis students, I identified a critical gap in mental health support: existing resources were either inaccessible (requiring appointments and long wait times) or inconsistent (relying on students to remember to check in with themselves). Students needed a lightweight, judgment-free tool that met them where they were—every single day.
+            </p>
+            <br>
+            <p class="context-body">
+                The challenge wasn't just building a mood tracker. It was creating a product that fostered genuine habit formation and supported sustainable mental health practices through thoughtful interaction design and content strategy.
+            </p>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <h2 class="section-label">Research Insights</h2>
+        
+        <div class="discovery-cards">
+            <div class="discovery-card">
+                <div class="card-icon">🔍</div>
+                <div class="card-heading">User Interviews</div>
+                <div class="card-text">
+                    Conducted 80+ interviews to understand student mental health behaviors, existing coping mechanisms, and barriers to consistent self-reflection. Discovered that complexity and judgment were the biggest obstacles to regular check-ins.
+                </div>
+            </div>
+            
+            <div class="discovery-card">
+                <div class="card-icon">📊</div>
+                <div class="card-heading">Behavioral Patterns</div>
+                <div class="card-text">
+                    Analyzed when students were most likely to engage with mental health tools and what prompted consistent usage. Found that gentle, non-intrusive prompts paired with simple, low-effort interactions drove the highest engagement.
+                </div>
+            </div>
+            
+            <div class="discovery-card">
+                <div class="card-icon">🎯</div>
+                <div class="card-heading">Product Scoping</div>
+                <div class="card-text">
+                    Defined scope around three core features: daily mood input, reflective journaling, and progress visualization. Prioritized simplicity and ease of use over feature breadth to reduce friction and support habit formation.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution-area">
+        <h2 class="solution-heading">The Solution</h2>
+        
+        <div class="features-display">
+            <div class="feature-block">
+                <div class="feature-circle">✨</div>
+                <div class="feature-title">Daily Check-Ins</div>
+                <div class="feature-detail">
+                    Simple, one-tap mood input designed to take less than 30 seconds. Removed barriers to entry by eliminating account creation and complex onboarding flows.
+                </div>
+            </div>
+            
+            <div class="feature-block">
+                <div class="feature-circle">📝</div>
+                <div class="feature-title">Guided Journaling</div>
+                <div class="feature-detail">
+                    Thoughtful prompts that encouraged reflection without overwhelming users. Designed prompts based on research into effective therapeutic journaling techniques.
+                </div>
+            </div>
+            
+            <div class="feature-block">
+                <div class="feature-circle">📈</div>
+                <div class="feature-title">Progress Tracking</div>
+                <div class="feature-detail">
+                    Non-judgmental visualizations that celebrated consistency and patterns over perfection. Showed trends and insights without inducing guilt for missed check-ins.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="strategy-section">
+            <h2 class="section-label">Product Strategy & Execution</h2>
+            
+            <div class="strategy-points">
+                <div class="strategy-point">
+                    <div class="point-icon-circle">🎨</div>
+                    <div class="point-content">
+                        <h3>UX-Driven Design</h3>
+                        <p>
+                            Designed every interaction to minimize friction and maximize emotional safety. Created a calming visual language and gentle micro-interactions that reinforced the feeling of a supportive, non-judgmental space.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="strategy-point">
+                    <div class="point-icon-circle">⏰</div>
+                    <div class="point-content">
+                        <h3>Optimized Prompting Cadence</h3>
+                        <p>
+                            Used behavioral data to identify optimal times for check-in prompts. Iterated on notification timing and frequency based on engagement metrics, increasing daily completion rates while respecting boundaries.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="strategy-point">
+                    <div class="point-icon-circle">📊</div>
+                    <div class="point-content">
+                        <h3>Data-Driven Iteration</h3>
+                        <p>
+                            Defined engagement KPIs around daily check-in completion, journaling frequency, and return usage. Analyzed post-launch data to refine content flows and interaction design, leading to 35% increase in sustained engagement.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="strategy-point">
+                    <div class="point-icon-circle">🌱</div>
+                    <div class="point-content">
+                        <h3>Habit Formation Focus</h3>
+                        <p>
+                            Prioritized features that supported long-term habit formation over short-term engagement spikes. Built streak tracking and gentle reminders that encouraged consistency without inducing pressure or guilt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="results-banner">
+        <h2 class="results-title">Impact & Outcomes</h2>
+        <div class="results-flex">
+            <div class="result-block">
+                <div class="result-number">35%</div>
+                <div class="result-label">Increase in Daily Check-Ins</div>
+            </div>
+            <div class="result-block">
+                <div class="result-number">75%</div>
+                <div class="result-label">Weekly Active Users</div>
+            </div>
+            <div class="result-block">
+                <div class="result-number">4.6/5</div>
+                <div class="result-label">User Satisfaction Score</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="strategy-section" style="margin-bottom: 6rem;">
+            <h2 class="section-label">Reflections & Personal Growth</h2>
+            
+            <div class="strategy-points">
+                <div class="strategy-point">
+                    <div class="point-icon-circle">💭</div>
+                    <div class="point-content">
+                        <h3>Designing for Vulnerability</h3>
+                        <p>
+                            Building a mental health product taught me that traditional engagement metrics don't tell the whole story. High daily active users might sound great, but what if users feel pressured to check in? I learned to balance growth goals with user wellbeing—sometimes the most ethical product decision is designing features that people can disengage from without guilt.
+                        </p>
+                        <br>
+                        <p>
+                            This reframed how I think about "stickiness" in consumer products. For Moo'd, success wasn't just retention—it was building a tool people trusted enough to use during their most vulnerable moments, then felt safe stepping away from when they didn't need it.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="strategy-point">
+                    <div class="point-icon-circle">⚖️</div>
+                    <div class="point-content">
+                        <h3>The Notification Dilemma</h3>
+                        <p>
+                            My biggest challenge was optimizing notification timing without becoming intrusive. Early versions prompted check-ins three times daily, which some users found helpful but others found overwhelming. Data showed higher engagement with more prompts—but qualitative feedback revealed this was creating anxiety, not supporting mental health.
+                        </p>
+                        <br>
+                        <p>
+                            I learned that quantitative data can mislead when building products for sensitive use cases. We reduced prompts to once daily with user-controlled timing, and although DAU initially dropped 15%, user satisfaction scores increased significantly. This taught me that the "right" metric depends on what you're actually trying to achieve—and sometimes growth isn't the goal.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="strategy-point">
+                    <div class="point-icon-circle">🎨</div>
+                    <div class="point-content">
+                        <h3>The Power of Non-Judgmental Design</h3>
+                        <p>
+                            Through user research, I discovered that students avoided journaling apps because they felt judged by their own inconsistency. Seeing blank calendar days or broken streaks made them feel like they were "failing" at self-care. This insight completely changed our approach to progress visualization.
+                        </p>
+                        <br>
+                        <p>
+                            We removed all language around "streaks" and "goals," instead showing patterns and gentle encouragement. This single design decision improved long-term retention by 30%. It reinforced that product language and visual design aren't just aesthetic choices—they fundamentally shape user experience and outcomes.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="strategy-point">
+                    <div class="point-icon-circle">🔄</div>
+                    <div class="point-content">
+                        <h3>What I'd Approach Differently</h3>
+                        <p>
+                            I would have consulted with mental health professionals earlier in the product development process. While user research gave us valuable insights, having clinical expertise would have helped us avoid potential pitfalls in our prompting and journaling approaches. Future projects in sensitive domains will include domain experts from day one, not just as reviewers before launch.
+                        </p>
+                        <br>
+                        <p>
+                            I'd also build more robust content moderation for journal entries. While privacy was important, some users wrote concerning content with no pathway to support. Building responsible product features around crisis detection would have been valuable, even though it adds complexity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="skills-area">
+            <h2 class="section-label">PM Skills Demonstrated</h2>
+            
+            <div class="skills-tags">
+                <div class="skill-tag">User Research</div>
+                <div class="skill-tag">Product Roadmapping</div>
+                <div class="skill-tag">Behavioral Design</div>
+                <div class="skill-tag">UX Strategy</div>
+                <div class="skill-tag">Data Analysis</div>
+                <div class="skill-tag">Engagement Metrics</div>
+                <div class="skill-tag">A/B Testing</div>
+                <div class="skill-tag">Content Strategy</div>
+                <div class="skill-tag">Habit Formation</div>
+                <div class="skill-tag">Feature Prioritization</div>
+                <div class="skill-tag">Launch Planning</div>
+                <div class="skill-tag">KPI Definition</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <h2 class="section-label">Design Process: Wireframes</h2>
+        
+        <div style="background: white; border-radius: 40px; padding: 6rem 5rem; margin: 3rem 0; box-shadow: 0 25px 70px rgba(0,0,0,0.07);">
+            <h3 style="font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 600; color: var(--deep-plum); margin-bottom: 4rem; text-align: center;">UX Design & User Flows</h3>
+            
+            <!-- Wireframe 1: Daily Check-in Flow -->
+            <div style="margin-bottom: 6rem;">
+                <h4 style="font-family: 'Crimson Pro', serif; font-size: 1.85rem; font-weight: 600; color: var(--lavender); margin-bottom: 2rem;">Daily Check-in Flow</h4>
+                <svg width="100%" height="450" viewBox="0 0 1200 450" style="background: linear-gradient(135deg, #FDFBF7 0%, #F9F5F0 100%); border-radius: 20px; padding: 2rem;">
+                    <!-- Screen 1: Prompt -->
+                    <g transform="translate(80, 50)">
+                        <rect width="240" height="350" fill="white" stroke="#E8D5F2" stroke-width="2" rx="24"/>
+                        <rect width="240" height="60" fill="var(--lavender)" rx="24 24 0 0"/>
+                        <text x="120" y="40" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Moo'd</text>
+                        
+                        <text x="120" y="100" text-anchor="middle" font-size="12" fill="#B4A7D6">Good morning! ☀️</text>
+                        <text x="120" y="140" text-anchor="middle" font-size="16" font-weight="600" fill="#4A3F5C">How are you</text>
+                        <text x="120" y="165" text-anchor="middle" font-size="16" font-weight="600" fill="#4A3F5C">feeling today?</text>
+                        
+                        <!-- Mood options -->
+                        <g transform="translate(30, 200)">
+                            <circle cx="30" cy="0" r="25" fill="#FFD5C2" opacity="0.3"/>
+                            <text x="30" y="8" text-anchor="middle" font-size="24">😊</text>
+                            
+                            <circle cx="90" cy="0" r="25" fill="#FFF8DC" opacity="0.3"/>
+                            <text x="90" y="8" text-anchor="middle" font-size="24">😌</text>
+                            
+                            <circle cx="150" cy="0" r="25" fill="#C8E7F5" opacity="0.3"/>
+                            <text x="150" y="8" text-anchor="middle" font-size="24">😐</text>
+                        </g>
+                        
+                        <g transform="translate(45, 260)">
+                            <circle cx="30" cy="0" r="25" fill="#B4A7D6" opacity="0.3"/>
+                            <text x="30" y="8" text-anchor="middle" font-size="24">😔</text>
+                            
+                            <circle cx="120" cy="0" r="25" fill="#F7CAC9" opacity="0.3"/>
+                            <text x="120" y="8" text-anchor="middle" font-size="24">😢</text>
+                        </g>
+                        
+                        <text x="120" y="330" text-anchor="middle" font-size="10" fill="#A0AEC0">Tap to select</text>
+                    </g>
+                    
+                    <!-- Arrow -->
+                    <path d="M 340 225 L 390 225" stroke="#B4A7D6" stroke-width="3" fill="none" marker-end="url(#arrowpurple)"/>
+                    
+                    <!-- Screen 2: Mood selected -->
+                    <g transform="translate(410, 50)">
+                        <rect width="240" height="350" fill="white" stroke="#E8D5F2" stroke-width="2" rx="24"/>
+                        <rect width="240" height="60" fill="var(--lavender)" rx="24 24 0 0"/>
+                        <text x="120" y="40" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Moo'd</text>
+                        
+                        <circle cx="120" cy="140" r="40" fill="#FFD5C2" opacity="0.4"/>
+                        <text x="120" y="155" text-anchor="middle" font-size="48">😊</text>
+                        
+                        <text x="120" y="220" text-anchor="middle" font-size="14" fill="#6B6578">That's wonderful!</text>
+                        <text x="120" y="245" text-anchor="middle" font-size="12" fill="#A0AEC0">Want to share more?</text>
+                        
+                        <rect x="40" y="270" width="160" height="45" fill="var(--lavender)" rx="22"/>
+                        <text x="120" y="297" text-anchor="middle" font-size="13" fill="white" font-weight="600">Add a note</text>
+                        
+                        <text x="120" y="340" text-anchor="middle" font-size="11" fill="#A0AEC0">Skip for now</text>
+                    </g>
+                    
+                    <!-- Arrow -->
+                    <path d="M 670 225 L 720 225" stroke="#B4A7D6" stroke-width="3" fill="none" marker-end="url(#arrowpurple)"/>
+                    
+                    <!-- Screen 3: Confirmation -->
+                    <g transform="translate(740, 50)">
+                        <rect width="240" height="350" fill="white" stroke="#E8D5F2" stroke-width="2" rx="24"/>
+                        <rect width="240" height="60" fill="var(--lavender)" rx="24 24 0 0"/>
+                        <text x="120" y="40" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Moo'd</text>
+                        
+                        <circle cx="120" cy="140" r="50" fill="#A8E6CF" opacity="0.3"/>
+                        <text x="120" y="155" text-anchor="middle" font-size="56">✓</text>
+                        
+                        <text x="120" y="230" text-anchor="middle" font-size="16" font-weight="600" fill="#4A3F5C">Check-in complete!</text>
+                        <text x="120" y="255" text-anchor="middle" font-size="12" fill="#6B6578">You're on a 7-day streak 🔥</text>
+                        
+                        <rect x="40" y="285" width="160" height="40" fill="white" stroke="#B4A7D6" stroke-width="2" rx="20"/>
+                        <text x="120" y="311" text-anchor="middle" font-size="12" fill="#4A3F5C" font-weight="600">View your week</text>
+                    </g>
+                    
+                    <!-- Arrow marker definition -->
+                    <defs>
+                        <marker id="arrowpurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#B4A7D6"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <p style="color: #6B6578; margin-top: 2rem; font-size: 1.1rem; line-height: 1.85;">Simplified three-tap check-in flow designed to take under 30 seconds. Positive reinforcement (streak tracking) encourages consistency without pressure.</p>
+            </div>
+            
+            <!-- Wireframe 2: Journaling Interface -->
+            <div style="margin-bottom: 6rem;">
+                <h4 style="font-family: 'Crimson Pro', serif; font-size: 1.85rem; font-weight: 600; color: var(--lavender); margin-bottom: 2rem;">Guided Journaling Interface</h4>
+                <svg width="100%" height="500" viewBox="0 0 800 500" style="background: linear-gradient(135deg, #FDFBF7 0%, #F9F5F0 100%); border-radius: 20px; padding: 2rem;">
+                    <!-- Mobile frame -->
+                    <rect x="200" y="30" width="400" height="440" fill="white" stroke="#E8D5F2" stroke-width="2" rx="24"/>
+                    
+                    <!-- Header -->
+                    <rect x="200" y="30" width="400" height="60" fill="linear-gradient(135deg, var(--lavender), var(--powder-blue))" rx="24 24 0 0"/>
+                    <text x="230" y="65" font-size="18" fill="white">←</text>
+                    <text x="400" y="65" text-anchor="middle" font-size="15" font-weight="bold" fill="white">Journal Entry</text>
+                    <text x="570" y="65" text-anchor="end" font-size="14" fill="white">Save</text>
+                    
+                    <!-- Date -->
+                    <text x="400" y="115" text-anchor="middle" font-size="12" fill="#A0AEC0">Tuesday, Feb 10, 2026</text>
+                    
+                    <!-- Prompt -->
+                    <rect x="230" y="135" width="340" height="80" fill="#FFF5E6" stroke="#FFB627" stroke-width="1" rx="12"/>
+                    <text x="250" y="160" font-size="13" font-weight="600" fill="#D69E2E">Today's prompt:</text>
+                    <text x="250" y="182" font-size="12" fill="#6B6578">What's one thing you're grateful</text>
+                    <text x="250" y="200" font-size="12" fill="#6B6578">for today?</text>
+                    
+                    <!-- Text area -->
+                    <rect x="230" y="230" width="340" height="160" fill="#F7FAFC" stroke="#E2E8F0" stroke-width="1" rx="8"/>
+                    <text x="245" y="255" font-size="13" fill="#4A3F5C">I'm grateful for the sunny</text>
+                    <text x="245" y="275" font-size="13" fill="#4A3F5C">weather today. It made my</text>
+                    <text x="245" y="295" font-size="13" fill="#4A3F5C">morning walk to class so</text>
+                    <text x="245" y="315" font-size="13" fill="#4A3F5C">much better...</text>
+                    <rect x="240" y="325" width="2" height="15" fill="#B4A7D6">
+                        <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite"/>
+                    </rect>
+                    
+                    <!-- Suggestions -->
+                    <text x="230" y="415" font-size="11" fill="#A0AEC0">Suggested prompts:</text>
+                    <g transform="translate(230, 425)">
+                        <rect width="100" height="24" fill="white" stroke="#B4A7D6" stroke-width="1" rx="12"/>
+                        <text x="50" y="16" text-anchor="middle" font-size="10" fill="#4A3F5C">Today's win</text>
+                        
+                        <rect x="110" width="110" height="24" fill="white" stroke="#B4A7D6" stroke-width="1" rx="12"/>
+                        <text x="165" y="16" text-anchor="middle" font-size="10" fill="#4A3F5C">Stress check</text>
+                        
+                        <rect x="230" width="90" height="24" fill="white" stroke="#B4A7D6" stroke-width="1" rx="12"/>
+                        <text x="275" y="16" text-anchor="middle" font-size="10" fill="#4A3F5C">Free write</text>
+                    </g>
+                </svg>
+                <p style="color: #6B6578; margin-top: 2rem; font-size: 1.1rem; line-height: 1.85;">Gentle prompts encourage reflection without overwhelming users. Suggested topics provide structure for those who need it while allowing freeform journaling.</p>
+            </div>
+            
+            <!-- Wireframe 3: Progress Visualization -->
+            <div>
+                <h4 style="font-family: 'Crimson Pro', serif; font-size: 1.85rem; font-weight: 600; color: var(--lavender); margin-bottom: 2rem;">Weekly Progress Dashboard</h4>
+                <svg width="100%" height="550" viewBox="0 0 800 550" style="background: linear-gradient(135deg, #FDFBF7 0%, #F9F5F0 100%); border-radius: 20px; padding: 2rem;">
+                    <!-- Mobile frame -->
+                    <rect x="150" y="30" width="500" height="490" fill="white" stroke="#E8D5F2" stroke-width="2" rx="24"/>
+                    
+                    <!-- Header -->
+                    <rect x="150" y="30" width="500" height="70" fill="var(--deep-plum)" rx="24 24 0 0"/>
+                    <text x="400" y="70" text-anchor="middle" font-size="18" font-weight="bold" fill="white">Your Week</text>
+                    
+                    <!-- Stats -->
+                    <g transform="translate(180, 120)">
+                        <rect width="140" height="90" fill="linear-gradient(135deg, #B4A7D6, #C8E7F5)" rx="16"/>
+                        <text x="70" y="35" text-anchor="middle" font-size="32" font-weight="bold" fill="white">7</text>
+                        <text x="70" y="60" text-anchor="middle" font-size="12" fill="white" opacity="0.9">Day Streak</text>
+                        <text x="70" y="75" text-anchor="middle" font-size="11" fill="white" opacity="0.8">🔥 Keep going!</text>
+                    </g>
+                    
+                    <g transform="translate(340, 120)">
+                        <rect width="140" height="90" fill="linear-gradient(135deg, #FFD5C2, #FFF8DC)" rx="16"/>
+                        <text x="70" y="35" text-anchor="middle" font-size="32" font-weight="bold" fill="#4A3F5C">12</text>
+                        <text x="70" y="60" text-anchor="middle" font-size="12" fill="#4A3F5C" opacity="0.9">Entries</text>
+                        <text x="70" y="75" text-anchor="middle" font-size="11" fill="#4A3F5C" opacity="0.7">This week</text>
+                    </g>
+                    
+                    <!-- Mood calendar -->
+                    <text x="180" y="245" font-size="14" font-weight="600" fill="#4A3F5C">This Week's Mood</text>
+                    <g transform="translate(180, 260)">
+                        <!-- Days -->
+                        <text x="30" y="-5" text-anchor="middle" font-size="10" fill="#A0AEC0">M</text>
+                        <text x="90" y="-5" text-anchor="middle" font-size="10" fill="#A0AEC0">T</text>
+                        <text x="150" y="-5" text-anchor="middle" font-size="10" fill="#A0AEC0">W</text>
+                        <text x="210" y="-5" text-anchor="middle" font-size="10" fill="#A0AEC0">T</text>
+                        <text x="270" y="-5" text-anchor="middle" font-size="10" fill="#A0AEC0">F</text>
+                        <text x="330" y="-5" text-anchor="middle" font-size="10" fill="#A0AEC0">S</text>
+                        <text x="390" y="-5" text-anchor="middle" font-size="10" fill="#A0AEC0">S</text>
+                        
+                        <!-- Mood circles -->
+                        <circle cx="30" cy="30" r="22" fill="#A8E6CF" opacity="0.4"/>
+                        <text x="30" y="38" text-anchor="middle" font-size="24">😊</text>
+                        
+                        <circle cx="90" cy="30" r="22" fill="#FFD5C2" opacity="0.4"/>
+                        <text x="90" y="38" text-anchor="middle" font-size="24">😌</text>
+                        
+                        <circle cx="150" cy="30" r="22" fill="#A8E6CF" opacity="0.4"/>
+                        <text x="150" y="38" text-anchor="middle" font-size="24">😊</text>
+                        
+                        <circle cx="210" cy="30" r="22" fill="#C8E7F5" opacity="0.4"/>
+                        <text x="210" y="38" text-anchor="middle" font-size="24">😐</text>
+                        
+                        <circle cx="270" cy="30" r="22" fill="#FFD5C2" opacity="0.4"/>
+                        <text x="270" y="38" text-anchor="middle" font-size="24">😌</text>
+                        
+                        <circle cx="330" cy="30" r="22" fill="#A8E6CF" opacity="0.4"/>
+                        <text x="330" y="38" text-anchor="middle" font-size="24">😊</text>
+                        
+                        <circle cx="390" cy="30" r="22" fill="#B4A7D6" opacity="0.4"/>
+                        <text x="390" y="38" text-anchor="middle" font-size="24">😔</text>
+                    </g>
+                    
+                    <!-- Insights -->
+                    <rect x="180" y="350" width="440" height="100" fill="linear-gradient(135deg, #F7FAFC, #EDF2F7)" rx="16"/>
+                    <text x="200" y="380" font-size="13" font-weight="600" fill="#4A3F5C">💡 Patterns & Insights</text>
+                    <text x="200" y="405" font-size="11" fill="#6B6578">You've been most positive in the</text>
+                    <text x="200" y="420" font-size="11" fill="#6B6578">mornings this week. Consider morning</text>
+                    <text x="200" y="435" font-size="11" fill="#6B6578">routines that support your wellbeing!</text>
+                    
+                    <!-- Action button -->
+                    <rect x="230" y="470" width="340" height="40" fill="var(--lavender)" rx="20"/>
+                    <text x="400" y="495" text-anchor="middle" font-size="13" fill="white" font-weight="600">Continue Your Streak</text>
+                </svg>
+                <p style="color: #6B6578; margin-top: 2rem; font-size: 1.1rem; line-height: 1.85;">Visual mood calendar and AI-generated insights help students identify patterns without judgment. Focus on celebration and encouragement rather than missed days.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="skills-area">
+            <h2 class="section-label">PM Skills Demonstrated</h2>
+            
+            <div class="skills-tags">
+                <div class="skill-tag">User Research</div>
+                <div class="skill-tag">Product Roadmapping</div>
+                <div class="skill-tag">Behavioral Design</div>
+                <div class="skill-tag">UX Strategy</div>
+                <div class="skill-tag">Data Analysis</div>
+                <div class="skill-tag">Engagement Metrics</div>
+                <div class="skill-tag">A/B Testing</div>
+                <div class="skill-tag">Content Strategy</div>
+                <div class="skill-tag">Habit Formation</div>
+                <div class="skill-tag">Feature Prioritization</div>
+                <div class="skill-tag">Launch Planning</div>
+                <div class="skill-tag">KPI Definition</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-section">
+        <h2 class="section-label" style="text-align: center; margin-bottom: 2.5rem;">More Product Work</h2>
+        <p style="font-size: 1.3rem; color: #6B6578; margin-bottom: 3.5rem;">Explore how I approach product challenges across different contexts</p>
+        <a href="index.html" class="footer-link">← Back to Portfolio</a>
+    </section>
+</body>
+</html>

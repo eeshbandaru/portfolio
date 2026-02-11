@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Align Technology: Monetization Intern | Eesha Bandaru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;500;700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --align-blue: #0066FF;
+            --align-teal: #00C2CB;
+            --medical-green: #00D4AA;
+            --deep-navy: #0A1628;
+            --soft-gray: #F8FAFB;
+            --accent-coral: #FF6B6B;
+            --shadow-sm: 0 2px 8px rgba(0, 102, 255, 0.08);
+            --shadow-lg: 0 20px 60px rgba(10, 22, 40, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #F8FAFB 0%, #E8F4F8 100%);
+            color: var(--deep-navy);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(165deg, var(--deep-navy) 0%, #1a2942 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+            50% { transform: scale(1.2) rotate(5deg); opacity: 0.5; }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .eyebrow {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--align-teal);
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1.2s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            color: white;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 1s ease-out both;
+        }
+
+        .metric-card:nth-child(1) { animation-delay: 0.5s; }
+        .metric-card:nth-child(2) { animation-delay: 0.6s; }
+        .metric-card:nth-child(3) { animation-delay: 0.7s; }
+
+        .metric-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .metric-number {
+            font-family: 'Fraunces', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--align-teal);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+        }
+
+        .section-header {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--align-blue), var(--align-teal));
+            border-radius: 2px;
+        }
+
+        .problem-statement {
+            background: white;
+            border-radius: 24px;
+            padding: 4rem;
+            box-shadow: var(--shadow-lg);
+            margin: 3rem 0;
+            border-left: 6px solid var(--accent-coral);
+        }
+
+        .problem-statement h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.75rem;
+            color: var(--accent-coral);
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-statement p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #4A5568;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .approach-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--align-blue);
+        }
+
+        .approach-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .approach-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--align-blue), var(--align-teal));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .approach-card h4 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            color: var(--deep-navy);
+            margin-bottom: 1rem;
+        }
+
+        .approach-card p {
+            color: #4A5568;
+            line-height: 1.7;
+        }
+
+        .impact-section {
+            background: linear-gradient(135deg, var(--deep-navy) 0%, #1a2942 100%);
+            border-radius: 32px;
+            padding: 5rem;
+            margin: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 194, 203, 0.2) 0%, transparent 70%);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .impact-item {
+            text-align: center;
+        }
+
+        .impact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .impact-stat {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--align-teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.125rem;
+        }
+
+        .skills-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .skill-tag {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid var(--align-blue);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--align-blue);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: var(--align-blue);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--align-blue), var(--align-teal));
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--align-teal);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--align-blue);
+            z-index: 3;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content:first-child {
+            grid-column: 1;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 2;
+        }
+
+        .timeline-phase {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            color: var(--align-blue);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: var(--soft-gray);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.25rem 3rem;
+            background: linear-gradient(135deg, var(--align-blue), var(--align-teal));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .subtitle { font-size: 1.25rem; }
+            .section-header { font-size: 2rem; }
+            .timeline::before { left: 20px; }
+            .timeline-item { grid-template-columns: 1fr; padding-left: 60px; }
+            .timeline-item::before { left: 20px; }
+            .timeline-content { grid-column: 1 !important; }
+            .problem-statement, .impact-section { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="eyebrow">Product Owner Intern | Summer 2024</div>
+            <h1>Transforming B2B2C Order Processing at Align Technology</h1>
+            <p class="subtitle">Redesigning a core API to eliminate order failures and accelerate patient care delivery</p>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-number">20%</div>
+                    <div class="metric-label">Improvement in Order Accuracy</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">30%</div>
+                    <div class="metric-label">Faster Issue Resolution</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number">100K+</div>
+                    <div class="metric-label">Orders Processed Monthly</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-header">The Challenge</h2>
+        
+        <div class="problem-statement">
+            <h3>🚨 Critical System Bottleneck</h3>
+            <p>Invisalign's order-processing API was causing significant disruption to doctor workflows and patient care timelines. The system translated Salesforce order codes into SAP payment codes, but frequent mismatches led to delayed or rejected orders—directly impacting time-sensitive orthodontic treatments.</p>
+            <br>
+            <p><strong>The stakes:</strong> Doctors couldn't efficiently place orders, patients faced treatment delays, and the finance and operations teams spent hours manually intervening to fix translation errors.</p>
+        </div>
+
+        <h2 class="section-header" style="margin-top: 6rem;">Product Approach</h2>
+        
+        <div class="approach-grid">
+            <div class="approach-card">
+                <div class="approach-icon">📊</div>
+                <h4>Data-Driven Discovery</h4>
+                <p>Conducted deep analysis of order failure patterns, identifying specific Salesforce-to-SAP translation mismatches that caused the most disruption. Quantified impact to build business case and inform prioritization.</p>
+            </div>
+            
+            <div class="approach-card">
+                <div class="approach-icon">🔍</div>
+                <h4>Cross-Functional Collaboration</h4>
+                <p>Partnered with engineering, finance, and operations teams to map complex order workflows, understand edge cases, and define comprehensive API requirements that addressed root causes.</p>
+            </div>
+            
+            <div class="approach-card">
+                <div class="approach-icon">⚡</div>
+                <h4>System Redesign</h4>
+                <p>Defined new data mappings, validation rules, and real-time visibility features. Established KPIs to measure system performance and ensure sustained improvements in order accuracy.</p>
+            </div>
+        </div>
+
+        <h2 class="section-header" style="margin-top: 6rem;">Execution Timeline</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-phase">Week 1-2: Discovery</div>
+                    <p>Analyzed existing API architecture and order failure data. Conducted stakeholder interviews with finance, ops, and engineering to understand pain points and system constraints.</p>
+                </div>
+                <div></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div></div>
+                <div class="timeline-content">
+                    <div class="timeline-phase">Week 3-5: Requirements Definition</div>
+                    <p>Defined comprehensive API requirements, data mapping logic, and validation rules. Created detailed specifications for engineering implementation and cross-team alignment.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-phase">Week 6-8: Implementation & Testing</div>
+                    <p>Worked closely with engineering during API redesign. Established KPIs and monitoring dashboards for real-time visibility into translation failures and system performance.</p>
+                </div>
+                <div></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div></div>
+                <div class="timeline-content">
+                    <div class="timeline-phase">Week 9-12: Launch & Optimization</div>
+                    <p>Rolled out new API to production. Monitored performance metrics, resolved edge cases, and iterated based on real-world usage patterns to optimize accuracy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="impact-section">
+        <div class="impact-grid">
+            <div class="impact-item">
+                <div class="impact-icon">✅</div>
+                <div class="impact-stat">20%</div>
+                <div class="impact-description">Increase in order accuracy, reducing processing delays</div>
+            </div>
+            
+            <div class="impact-item">
+                <div class="impact-icon">⚡</div>
+                <div class="impact-stat">30%</div>
+                <div class="impact-description">Faster issue resolution through real-time visibility</div>
+            </div>
+            
+            <div class="impact-item">
+                <div class="impact-icon">💼</div>
+                <div class="impact-stat">Reduced</div>
+                <div class="impact-description">Manual intervention needs for ops and finance teams</div>
+            </div>
+            
+            <div class="impact-item">
+                <div class="impact-icon">🏥</div>
+                <div class="impact-stat">Improved</div>
+                <div class="impact-description">Patient care timelines through reliable order processing</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-header">Reflections & Learnings</h2>
+        
+        <div class="problem-statement" style="border-left-color: var(--medical-green);">
+            <h3 style="color: var(--medical-green);">What I Learned About Technical Product Management</h3>
+            <p>This project taught me that the best product solutions aren't always the most feature-rich—they're the ones that solve the right problem at the root level. Initially, I considered building additional validation layers on top of the existing API. But by investing time in understanding the actual translation logic failures through data analysis, I realized we needed to redesign the core mapping system itself.</p>
+            <br>
+            <p><strong>Key insight:</strong> In B2B2C products, every system failure has a ripple effect. A delayed order isn't just a technical issue—it's a doctor losing trust in the platform and a patient experiencing delayed care. This experience reinforced that PM success in technical products requires balancing system architecture decisions with deep empathy for end-user impact.</p>
+            <br>
+            <p><strong>What I'd do differently:</strong> I would have involved the operations team even earlier in the requirements definition phase. Their hands-on experience with manual interventions provided invaluable context that could have accelerated our problem scoping. In future projects, I'll prioritize including operational stakeholders from day one, not just during implementation.</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-header">Product Skills Demonstrated</h2>
+        
+        <div class="skills-cloud">
+            <div class="skill-tag">API Product Ownership</div>
+            <div class="skill-tag">Data Analysis</div>
+            <div class="skill-tag">Requirements Definition</div>
+            <div class="skill-tag">Cross-Functional Leadership</div>
+            <div class="skill-tag">KPI Definition</div>
+            <div class="skill-tag">Stakeholder Management</div>
+            <div class="skill-tag">System Architecture</div>
+            <div class="skill-tag">B2B2C Workflows</div>
+            <div class="skill-tag">Technical Communication</div>
+            <div class="skill-tag">Process Optimization</div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2 class="section-header">Explore More Projects</h2>
+        <p style="margin: 2rem 0; font-size: 1.125rem; color: #4A5568;">See how I approach product challenges across different domains</p>
+        <a href="index.html" class="cta-button">← Back to Portfolio</a>
+    </section>
+
+</body>
+</html>

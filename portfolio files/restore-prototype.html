@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restore Trust System - Interactive Prototype</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .prototype-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 37, 64, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 16px 24px;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(0, 212, 170, 0.3);
+        }
+
+        .prototype-header h1 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .prototype-header p {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            margin-top: 100px;
+        }
+
+        .version-toggle {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 8px;
+        }
+
+        .version-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .version-btn.active {
+            background: white;
+            color: #0A2540;
+        }
+
+        .listing-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .listing-content {
+            padding: 24px;
+        }
+
+        .product-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .product-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Trust Score Section */
+        .trust-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .trust-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .trust-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0A2540;
+        }
+
+        .trust-score {
+            font-size: 36px;
+            font-weight: 900;
+            color: #00D4AA;
+        }
+
+        .trust-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .trust-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #00D4AA);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1s ease 0.3s;
+        }
+
+        .trust-bar-fill.animate {
+            width: 84%;
+        }
+
+        .trust-details {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Badges */
+        .badges {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+        }
+
+        .badge-verified {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            border: 2px solid #22c55e;
+        }
+
+        .badge-lifespan {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+            border: 2px solid #f59e0b;
+        }
+
+        .badge-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* What This Means */
+        .meaning-box {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), rgba(0, 212, 170, 0.05));
+            padding: 16px;
+            border-radius: 12px;
+            border-left: 4px solid #00D4AA;
+            margin-bottom: 16px;
+        }
+
+        .meaning-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0A2540;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .meaning-text {
+            font-size: 14px;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        /* Expandable Details */
+        .expandable {
+            border-top: 1px solid #e0e0e0;
+            padding-top: 16px;
+        }
+
+        .expand-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 12px 0;
+            background: none;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            color: #0A2540;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .expand-trigger:hover {
+            color: #00D4AA;
+        }
+
+        .expand-icon {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .expand-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .expand-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .expand-content.open {
+            max-height: 500px;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            padding: 16px 0;
+        }
+
+        .spec-item {
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .spec-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .spec-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        /* Price & CTA */
+        .bottom-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1a1a1a;
+        }
+
+        .cta-button {
+            padding: 14px 32px;
+            background: #00D4AA;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: #00b891;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 212, 170, 0.3);
+        }
+
+        /* V1 Dashboard (Overwhelming) */
+        .v1-dashboard {
+            display: none;
+        }
+
+        .v1-dashboard.active {
+            display: block;
+        }
+
+        .v1-content {
+            padding: 24px;
+        }
+
+        .v1-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .v1-stat {
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .v1-stat-label {
+            font-size: 10px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .v1-stat-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .v1-chart {
+            background: #f8f9fa;
+            border: 2px dashed #d0d0d0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            min-height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .info-banner {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .info-banner strong {
+            color: #00D4AA;
+        }
+
+        @media (max-width: 640px) {
+            .spec-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bottom-section {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .cta-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="prototype-header">
+        <h1>Restore Trust System - Interactive Prototype</h1>
+        <p>Lightweight prototype built to demonstrate trust-first marketplace design and iterative product thinking</p>
+    </div>
+
+    <div class="container">
+        <div class="info-banner">
+            <strong>Toggle between versions:</strong> v1 shows the failed "data dashboard" approach that overwhelmed users. v4 shows the final "trust-first" design with progressive disclosure that achieved 73% comprehension.
+        </div>
+
+        <div class="version-toggle">
+            <button class="version-btn active" onclick="showVersion('v4')">
+                v4: Trust-First Design ✓
+            </button>
+            <button class="version-btn" onclick="showVersion('v1')">
+                v1: Data Dashboard ✗
+            </button>
+        </div>
+
+        <!-- V4: Trust-First Design (Default) -->
+        <div class="listing-card v4-design">
+            <div style="background: #e8f5e9; padding: 12px; text-align: center; border-bottom: 2px solid #4caf50;">
+                <strong style="color: #2e7d32;">✓ Shipped Solution (v4)</strong> - 73% comprehension • 4.2/5 purchase intent • SMUD pilot accepted
+            </div>
+            <div class="product-image">
+                Tesla Model 3 Battery Pack (2019)
+            </div>
+            <div class="listing-content">
+                <h2 class="product-title">Certified Second-Life Battery</h2>
+                <p class="product-subtitle">85kWh Capacity • Compatible with most home energy systems</p>
+
+                <!-- Trust Score -->
+                <div class="trust-section">
+                    <div class="trust-header">
+                        <span class="trust-label">Trust Score</span>
+                        <span class="trust-score">8.4/10</span>
+                    </div>
+                    <div class="trust-bar">
+                        <div class="trust-bar-fill" id="trustBarFill"></div>
+                    </div>
+                    <div class="trust-details">
+                        Based on: Safety certification ✓ • 2,847 cycles (87% capacity) ✓ • Verified seller ✓
+                    </div>
+                </div>
+
+                <!-- Badges -->
+                <div class="badges">
+                    <div class="badge badge-verified">
+                        <svg class="badge-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        UL Certified Safe
+                    </div>
+                    <div class="badge badge-lifespan">
+                        <svg class="badge-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                        </svg>
+                        5-8 Year Lifespan
+                    </div>
+                </div>
+
+                <!-- What This Means -->
+                <div class="meaning-box">
+                    <div class="meaning-title">What This Means for You</div>
+                    <div class="meaning-text">
+                        This battery has passed third-party safety testing and maintains strong capacity. Expected to power a typical home backup system for 5-8 years with normal use. Equivalent to 2,500-4,000 full charge cycles.
+                    </div>
+                </div>
+
+                <!-- Expandable Technical Details -->
+                <div class="expandable">
+                    <button class="expand-trigger" onclick="toggleDetails()">
+                        <span>View Technical Specifications</span>
+                        <svg class="expand-icon" id="expandIcon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <div class="expand-content" id="expandContent">
+                        <div class="spec-grid">
+                            <div class="spec-item">
+                                <div class="spec-label">Cycle Count</div>
+                                <div class="spec-value">2,847</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Capacity Retention</div>
+                                <div class="spec-value">87%</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Voltage Range</div>
+                                <div class="spec-value">350-400V</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Cell Chemistry</div>
+                                <div class="spec-value">NCA Li-ion</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Temperature Range</div>
+                                <div class="spec-value">-10°C to 45°C</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">Certification</div>
+                                <div class="spec-value">UL 1974</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price & CTA -->
+                <div class="bottom-section">
+                    <div class="price">$8,200</div>
+                    <button class="cta-button">Contact Seller</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- V1: Data Dashboard (Hidden by default) -->
+        <div class="listing-card v1-dashboard">
+            <div style="background: #fee; padding: 12px; text-align: center; border-bottom: 2px solid #f88;">
+                <strong style="color: #c00;">⚠️ Failed Approach (v1)</strong> - 73% of users said "too complex" • 67% abandoned within 2 minutes
+            </div>
+            <div class="product-image">
+                Tesla Model 3 Battery Pack (2019)
+            </div>
+            <div class="v1-content">
+                <h2 class="product-title">Tesla Model 3 Battery Pack</h2>
+                <p class="product-subtitle">85kWh Nominal Capacity • 2019 Model Year</p>
+
+                <div class="v1-stats">
+                    <div class="v1-stat">
+                        <div class="v1-stat-label">Cycle Count</div>
+                        <div class="v1-stat-value">2,847</div>
+                    </div>
+                    <div class="v1-stat">
+                        <div class="v1-stat-label">Capacity</div>
+                        <div class="v1-stat-value">87%</div>
+                    </div>
+                    <div class="v1-stat">
+                        <div class="v1-stat-label">Voltage</div>
+                        <div class="v1-stat-value">375V</div>
+                    </div>
+                    <div class="v1-stat">
+                        <div class="v1-stat-label">Impedance</div>
+                        <div class="v1-stat-value">45mΩ</div>
+                    </div>
+                    <div class="v1-stat">
+                        <div class="v1-stat-label">Temp Range</div>
+                        <div class="v1-stat-value">-10-45°C</div>
+                    </div>
+                    <div class="v1-stat">
+                        <div class="v1-stat-label">C-Rate</div>
+                        <div class="v1-stat-value">1.5C</div>
+                    </div>
+                </div>
+
+                <div class="v1-chart">
+                    <div style="width: 100%;">
+                        <div style="font-weight: 600; color: #333; margin-bottom: 8px;">Capacity Fade Curve</div>
+                        <div style="height: 80px; background: linear-gradient(to bottom, #667eea 0%, #667eea 20%, #e0e0e0 20%, #e0e0e0 100%); border-radius: 4px; position: relative;">
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 60%; background: linear-gradient(to right, #667eea, #764ba2); border-radius: 0 0 4px 4px; opacity: 0.7;"></div>
+                        </div>
+                        <div style="font-size: 11px; color: #999; margin-top: 4px;">Shows degradation over 2,847 cycles</div>
+                    </div>
+                </div>
+
+                <div class="v1-chart">
+                    <div style="width: 100%;">
+                        <div style="font-weight: 600; color: #333; margin-bottom: 8px;">Voltage Stability</div>
+                        <div style="height: 80px; display: flex; align-items: flex-end; gap: 2px;">
+                            <div style="flex: 1; background: #667eea; height: 70%; border-radius: 2px 2px 0 0;"></div>
+                            <div style="flex: 1; background: #667eea; height: 65%; border-radius: 2px 2px 0 0;"></div>
+                            <div style="flex: 1; background: #667eea; height: 75%; border-radius: 2px 2px 0 0;"></div>
+                            <div style="flex: 1; background: #667eea; height: 68%; border-radius: 2px 2px 0 0;"></div>
+                            <div style="flex: 1; background: #667eea; height: 72%; border-radius: 2px 2px 0 0;"></div>
+                            <div style="flex: 1; background: #667eea; height: 69%; border-radius: 2px 2px 0 0;"></div>
+                            <div style="flex: 1; background: #667eea; height: 73%; border-radius: 2px 2px 0 0;"></div>
+                            <div style="flex: 1; background: #667eea; height: 71%; border-radius: 2px 2px 0 0;"></div>
+                        </div>
+                        <div style="font-size: 11px; color: #999; margin-top: 4px;">30-day rolling average</div>
+                    </div>
+                </div>
+
+                <div class="v1-chart">
+                    <div style="width: 100%;">
+                        <div style="font-weight: 600; color: #333; margin-bottom: 8px;">Temperature Log</div>
+                        <div style="height: 80px; background: #e0e0e0; border-radius: 4px; position: relative; overflow: hidden;">
+                            <svg width="100%" height="100%" style="position: absolute;">
+                                <polyline points="0,60 12,55 25,50 37,58 50,52 62,48 75,45 87,50 100,46 112,43 125,40 137,45 150,42 162,38 175,35 187,40 200,37 212,33 225,30 237,35 250,32 262,28 275,25 287,30 300,27" 
+                                    fill="none" stroke="#667eea" stroke-width="3"/>
+                            </svg>
+                        </div>
+                        <div style="font-size: 11px; color: #999; margin-top: 4px;">Last 90 days of operation</div>
+                    </div>
+                </div>
+
+                <div class="v1-stats">
+                    <div class="v1-stat">
+                        <div class="v1-stat-label">Cell Balance</div>
+                        <div class="v1-stat-value">±2.1%</div>
+                    </div>
+                    <div class="v1-stat">
+                        <div class="v1-stat-label">State of Health</div>
+                        <div class="v1-stat-value">86.8%</div>
+                    </div>
+                    <div class="v1-stat">
+                        <div class="v1-stat-label">IR Growth</div>
+                        <div class="v1-stat-value">+18%</div>
+                    </div>
+                </div>
+
+                <div class="bottom-section">
+                    <div class="price">$8,200</div>
+                    <button class="cta-button">Contact Seller</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animate trust bar on load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('trustBarFill').classList.add('animate');
+            }, 300);
+        });
+
+        // Toggle expandable details
+        function toggleDetails() {
+            const content = document.getElementById('expandContent');
+            const icon = document.getElementById('expandIcon');
+            
+            content.classList.toggle('open');
+            icon.classList.toggle('rotated');
+        }
+
+        // Switch between versions
+        function showVersion(version) {
+            const v1 = document.querySelector('.v1-dashboard');
+            const v4 = document.querySelector('.v4-design');
+            const buttons = document.querySelectorAll('.version-btn');
+
+            if (version === 'v1') {
+                v1.classList.add('active');
+                v4.style.display = 'none';
+                buttons[1].classList.add('active');
+                buttons[0].classList.remove('active');
+            } else {
+                v1.classList.remove('active');
+                v4.style.display = 'block';
+                buttons[0].classList.add('active');
+                buttons[1].classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
